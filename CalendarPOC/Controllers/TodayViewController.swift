@@ -73,6 +73,13 @@ class TodayViewController: UIViewController {
         return collectionView
     }()
     
+    fileprivate lazy var devnagariDatesTablesView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return tableView
+    }()
+    
     //MARK:- LifeCycle
     
     override func viewDidLoad() {
@@ -82,6 +89,8 @@ class TodayViewController: UIViewController {
         layoutConstraintsForContainerView()
         
         layoutConstraintsForCollectionView()
+        
+        layoutConstraintsForTableView()
         
     }
     
@@ -132,8 +141,12 @@ class TodayViewController: UIViewController {
             devNagariDaysCollectionView.topAnchor.constraint(equalTo: containterView.bottomAnchor),
             devNagariDaysCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             devNagariDaysCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            devNagariDaysCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            devNagariDaysCollectionView.heightAnchor.constraint(equalToConstant: 320)
         ])
+    }
+    
+    func layoutConstraintsForTableView() {
+        
     }
     
     
@@ -156,6 +169,6 @@ extension TodayViewController: UICollectionViewDelegate, UICollectionViewDataSou
 
 extension TodayViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 10, left: 40, bottom: 0, right: 20)
+        return .init(top: 10, left: 30, bottom: 10, right: 20)
     }
 }

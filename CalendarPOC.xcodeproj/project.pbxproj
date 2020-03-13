@@ -46,7 +46,6 @@
 			children = (
 				22F892FD241A8D0D00AF0852 /* ViewController.swift */,
 				22DF6C76241AA55400967FFD /* TodayViewController.swift */,
-				2228654A241B13CF00FA091A /* DevnagariMappings.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -86,6 +85,7 @@
 		22F892F8241A8D0D00AF0852 /* CalendarPOC */ = {
 			isa = PBXGroup;
 			children = (
+				2228654A241B13CF00FA091A /* DevnagariMappings.swift */,
 				2228654D241B15B400FA091A /* Views */,
 				2228654C241B159D00FA091A /* Controllers */,
 				22F892F9241A8D0D00AF0852 /* AppDelegate.swift */,
