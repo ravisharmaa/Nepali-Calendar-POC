@@ -61,12 +61,36 @@ class TodayViewController: UIViewController {
         return label
     }()
     
+    fileprivate lazy var devNagariDaysCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.backgroundColor = #colorLiteral(red: 0.09018407017, green: 0.0902037397, blue: 0.09017974883, alpha: 1)
+        return collectionView
+    }()
+    
     //MARK:- LifeCycle
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
+        layoutConstraintsForContainerView()
+        
+        layoutConstraintsForCollectionView()
+        
+    }
+    
+    //MARK:- UI Layouts
+    
+    func layoutConstraintsForContainerView() {
+        
         view.addSubview(containterView)
+        
         
         NSLayoutConstraint.activate([
             containterView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -74,7 +98,7 @@ class TodayViewController: UIViewController {
             containterView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             containterView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4)
         ])
-
+        
         [devNagariDateLabel,
          devNagariDayLabel,
          devNagariMonthAndYearLabel,
@@ -91,9 +115,47 @@ class TodayViewController: UIViewController {
             devNagariMonthAndYearLabel.topAnchor.constraint(equalTo: devNagariDayLabel.bottomAnchor),
             devNagariPanchangaLabel.topAnchor.constraint(equalTo: devNagariMonthAndYearLabel.bottomAnchor, constant: 30),
             monthDayYearLabel.topAnchor.constraint(equalTo: devNagariPanchangaLabel.bottomAnchor, constant: 3),
-           
+            
         ])
         
+    }
+    
+    func layoutConstraintsForCollectionView () {
         
+        view.addSubview(devNagariDaysCollectionView)
+        
+        //registering the cell
+        
+        devNagariDaysCollectionView.register(DateCell.self, forCellWithReuseIdentifier: "reuseMe")
+        
+        NSLayoutConstraint.activate([
+            devNagariDaysCollectionView.topAnchor.constraint(equalTo: containterView.bottomAnchor),
+            devNagariDaysCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            devNagariDaysCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            devNagariDaysCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    
+}
+
+extension TodayViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 30
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseMe", for: indexPath) as! DateCell
+        
+        cell.populate(date: indexPath.item + 1)
+        
+        return cell
+    }
+}
+
+extension TodayViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .init(top: 10, left: 40, bottom: 0, right: 20)
     }
 }

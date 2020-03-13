@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22286549241B132900FA091A /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22286548241B132900FA091A /* DateCell.swift */; };
+		2228654B241B13CF00FA091A /* DevnagariMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228654A241B13CF00FA091A /* DevnagariMappings.swift */; };
 		22DF6C77241AA55400967FFD /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF6C76241AA55400967FFD /* TodayViewController.swift */; };
 		22F892FA241A8D0D00AF0852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F892F9241A8D0D00AF0852 /* AppDelegate.swift */; };
 		22F892FC241A8D0D00AF0852 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F892FB241A8D0D00AF0852 /* SceneDelegate.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22286548241B132900FA091A /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		2228654A241B13CF00FA091A /* DevnagariMappings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevnagariMappings.swift; sourceTree = "<group>"; };
 		22DF6C76241AA55400967FFD /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		22F892F6241A8D0D00AF0852 /* CalendarPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F892F9241A8D0D00AF0852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +41,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2228654C241B159D00FA091A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				22F892FD241A8D0D00AF0852 /* ViewController.swift */,
+				22DF6C76241AA55400967FFD /* TodayViewController.swift */,
+				2228654A241B13CF00FA091A /* DevnagariMappings.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2228654D241B15B400FA091A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2228654E241B15C000FA091A /* CollectionViewCells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2228654E241B15C000FA091A /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				22286548241B132900FA091A /* DateCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
 		22F892ED241A8D0D00AF0852 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +86,13 @@
 		22F892F8241A8D0D00AF0852 /* CalendarPOC */ = {
 			isa = PBXGroup;
 			children = (
+				2228654D241B15B400FA091A /* Views */,
+				2228654C241B159D00FA091A /* Controllers */,
 				22F892F9241A8D0D00AF0852 /* AppDelegate.swift */,
 				22F892FB241A8D0D00AF0852 /* SceneDelegate.swift */,
-				22F892FD241A8D0D00AF0852 /* ViewController.swift */,
 				22F89302241A8D0F00AF0852 /* Assets.xcassets */,
 				22F89304241A8D0F00AF0852 /* LaunchScreen.storyboard */,
 				22F89307241A8D0F00AF0852 /* Info.plist */,
-				22DF6C76241AA55400967FFD /* TodayViewController.swift */,
 			);
 			path = CalendarPOC;
 			sourceTree = "<group>";
@@ -137,7 +167,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2228654B241B13CF00FA091A /* DevnagariMappings.swift in Sources */,
 				22DF6C77241AA55400967FFD /* TodayViewController.swift in Sources */,
+				22286549241B132900FA091A /* DateCell.swift in Sources */,
 				22F892FE241A8D0D00AF0852 /* ViewController.swift in Sources */,
 				22F892FA241A8D0D00AF0852 /* AppDelegate.swift in Sources */,
 				22F892FC241A8D0D00AF0852 /* SceneDelegate.swift in Sources */,
