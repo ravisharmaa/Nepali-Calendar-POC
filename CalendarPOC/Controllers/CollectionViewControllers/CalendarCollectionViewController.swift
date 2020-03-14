@@ -8,13 +8,14 @@
 
 import UIKit
 
-class MonthsCollectionViewController: UICollectionViewController {
+class CalendarCollectionViewController: UICollectionViewController {
     
     init() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         super.init(collectionViewLayout: layout)
         collectionView.backgroundColor = #colorLiteral(red: 0.09018407017, green: 0.0902037397, blue: 0.09017974883, alpha: 1)
+        //collectionView.backgroundColor = .red
     }
     
     required init?(coder: NSCoder) {
@@ -40,7 +41,7 @@ class MonthsCollectionViewController: UICollectionViewController {
     }
 }
 
-extension MonthsCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension CalendarCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
