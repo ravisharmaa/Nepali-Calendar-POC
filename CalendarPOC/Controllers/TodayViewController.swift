@@ -61,23 +61,26 @@ class TodayViewController: UIViewController {
         return label
     }()
     
-    fileprivate lazy var devNagariDaysCollectionView: UICollectionView = {
+    fileprivate lazy var devNagariDaysCollectionView: UICollectionViewController = {
         let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collectionView = MonthsCollectionViewController()
+        collectionView.view.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.view.backgroundColor = #colorLiteral(red: 0.09018407017, green: 0.0902037397, blue: 0.09017974883, alpha: 1)
+        return collectionView
+    }()
+    
+    fileprivate lazy var devNagariEventDetailsCollectionView: UICollectionView = {
+        let layout = EventLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = #colorLiteral(red: 0.09018407017, green: 0.0902037397, blue: 0.09017974883, alpha: 1)
-        return collectionView
-    }()
-    
-    fileprivate lazy var devnagariDatesTablesView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         
-        return tableView
+        return collectionView
     }()
     
     //MARK:- LifeCycle
@@ -90,7 +93,7 @@ class TodayViewController: UIViewController {
         
         layoutConstraintsForCollectionView()
         
-        layoutConstraintsForTableView()
+        layoutConstraintsForEventsCollectionView()
         
     }
     
@@ -124,51 +127,87 @@ class TodayViewController: UIViewController {
             devNagariMonthAndYearLabel.topAnchor.constraint(equalTo: devNagariDayLabel.bottomAnchor),
             devNagariPanchangaLabel.topAnchor.constraint(equalTo: devNagariMonthAndYearLabel.bottomAnchor, constant: 30),
             monthDayYearLabel.topAnchor.constraint(equalTo: devNagariPanchangaLabel.bottomAnchor, constant: 3),
-            
         ])
         
     }
     
     func layoutConstraintsForCollectionView () {
         
-        view.addSubview(devNagariDaysCollectionView)
         
-        //registering the cell
+        view.addSubview(devNagariDaysCollectionView.view)
         
-        devNagariDaysCollectionView.register(DateCell.self, forCellWithReuseIdentifier: "reuseMe")
+        addChild(devNagariDaysCollectionView)
+        
+        devNagariDaysCollectionView.didMove(toParent: self)
         
         NSLayoutConstraint.activate([
-            devNagariDaysCollectionView.topAnchor.constraint(equalTo: containterView.bottomAnchor),
-            devNagariDaysCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            devNagariDaysCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            devNagariDaysCollectionView.heightAnchor.constraint(equalToConstant: 320)
+            devNagariDaysCollectionView.view.topAnchor.constraint(equalTo: containterView.bottomAnchor),
+            devNagariDaysCollectionView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            devNagariDaysCollectionView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            devNagariDaysCollectionView.view.heightAnchor.constraint(equalToConstant: 280)
         ])
     }
     
-    func layoutConstraintsForTableView() {
+    func layoutConstraintsForEventsCollectionView() {
+        view.addSubview(devNagariEventDetailsCollectionView)
+        devNagariEventDetailsCollectionView.register(EventsCell.self, forCellWithReuseIdentifier: "eventsCell")
         
+        NSLayoutConstraint.activate([
+            devNagariEventDetailsCollectionView.topAnchor.constraint(equalTo: devNagariDaysCollectionView.view.bottomAnchor),
+            devNagariEventDetailsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            devNagariEventDetailsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            devNagariEventDetailsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     
 }
 
 extension TodayViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseMe", for: indexPath) as! DateCell
-        
-        cell.populate(date: indexPath.item + 1)
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "eventsCell", for: indexPath) as! EventsCell
         return cell
+        
+        
     }
 }
 
 extension TodayViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        
+        let availableWidth: CGFloat = devNagariEventDetailsCollectionView.frame.width
+        
+        let sectionInsetsLeftAndRight: CGFloat = 30 + 10
+        
+        let width = (availableWidth - sectionInsetsLeftAndRight)
+        
+        return .init(width: width, height: 70)
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 10, left: 30, bottom: 10, right: 20)
+        
+        return .init(top: 10, left: 30, bottom: 0, right: 10)
+        
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 10.0
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 10.0
     }
 }

@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		22286549241B132900FA091A /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22286548241B132900FA091A /* DateCell.swift */; };
-		2228654B241B13CF00FA091A /* DevnagariMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2228654A241B13CF00FA091A /* DevnagariMappings.swift */; };
+		223F21B8241CBC200078349B /* MonthsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F21B7241CBC200078349B /* MonthsViewController.swift */; };
+		223F21BA241CBC530078349B /* MonthsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F21B9241CBC530078349B /* MonthsCollectionViewController.swift */; };
+		2254CB90241C72DF0017ED21 /* EventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2254CB8F241C72DF0017ED21 /* EventsCell.swift */; };
+		2290B313241CAA7E0065F2DD /* EventLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290B312241CAA7E0065F2DD /* EventLayout.swift */; };
 		22DF6C77241AA55400967FFD /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF6C76241AA55400967FFD /* TodayViewController.swift */; };
 		22F892FA241A8D0D00AF0852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F892F9241A8D0D00AF0852 /* AppDelegate.swift */; };
 		22F892FC241A8D0D00AF0852 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F892FB241A8D0D00AF0852 /* SceneDelegate.swift */; };
@@ -19,7 +22,10 @@
 
 /* Begin PBXFileReference section */
 		22286548241B132900FA091A /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
-		2228654A241B13CF00FA091A /* DevnagariMappings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevnagariMappings.swift; sourceTree = "<group>"; };
+		223F21B7241CBC200078349B /* MonthsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsViewController.swift; sourceTree = "<group>"; };
+		223F21B9241CBC530078349B /* MonthsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsCollectionViewController.swift; sourceTree = "<group>"; };
+		2254CB8F241C72DF0017ED21 /* EventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
+		2290B312241CAA7E0065F2DD /* EventLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLayout.swift; sourceTree = "<group>"; };
 		22DF6C76241AA55400967FFD /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		22F892F6241A8D0D00AF0852 /* CalendarPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F892F9241A8D0D00AF0852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +52,8 @@
 			children = (
 				22F892FD241A8D0D00AF0852 /* ViewController.swift */,
 				22DF6C76241AA55400967FFD /* TodayViewController.swift */,
+				223F21B7241CBC200078349B /* MonthsViewController.swift */,
+				223F21B9241CBC530078349B /* MonthsCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -62,8 +70,17 @@
 			isa = PBXGroup;
 			children = (
 				22286548241B132900FA091A /* DateCell.swift */,
+				2254CB8F241C72DF0017ED21 /* EventsCell.swift */,
 			);
 			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		2290B311241CAA6B0065F2DD /* Customizations */ = {
+			isa = PBXGroup;
+			children = (
+				2290B312241CAA7E0065F2DD /* EventLayout.swift */,
+			);
+			path = Customizations;
 			sourceTree = "<group>";
 		};
 		22F892ED241A8D0D00AF0852 = {
@@ -85,7 +102,7 @@
 		22F892F8241A8D0D00AF0852 /* CalendarPOC */ = {
 			isa = PBXGroup;
 			children = (
-				2228654A241B13CF00FA091A /* DevnagariMappings.swift */,
+				2290B311241CAA6B0065F2DD /* Customizations */,
 				2228654D241B15B400FA091A /* Views */,
 				2228654C241B159D00FA091A /* Controllers */,
 				22F892F9241A8D0D00AF0852 /* AppDelegate.swift */,
@@ -167,12 +184,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2228654B241B13CF00FA091A /* DevnagariMappings.swift in Sources */,
+				223F21BA241CBC530078349B /* MonthsCollectionViewController.swift in Sources */,
 				22DF6C77241AA55400967FFD /* TodayViewController.swift in Sources */,
 				22286549241B132900FA091A /* DateCell.swift in Sources */,
+				2254CB90241C72DF0017ED21 /* EventsCell.swift in Sources */,
 				22F892FE241A8D0D00AF0852 /* ViewController.swift in Sources */,
 				22F892FA241A8D0D00AF0852 /* AppDelegate.swift in Sources */,
+				223F21B8241CBC200078349B /* MonthsViewController.swift in Sources */,
 				22F892FC241A8D0D00AF0852 /* SceneDelegate.swift in Sources */,
+				2290B313241CAA7E0065F2DD /* EventLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
