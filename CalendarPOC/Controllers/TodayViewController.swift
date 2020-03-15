@@ -61,17 +61,24 @@ class TodayViewController: UIViewController {
         return label
     }()
     
-    fileprivate lazy var devNagariDaysCollectionView: UICollectionViewController = {
-        let collectionView = CalendarCollectionViewController()
-        collectionView.view.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        return collectionView
-    }()
+//    fileprivate lazy var devNagariDaysCollectionView: UICollectionViewController = {
+//        let collectionView = CalendarCollectionViewController()
+//        collectionView.view.translatesAutoresizingMaskIntoConstraints = false
+//        collectionView.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        return collectionView
+//    }()
+//
+//    fileprivate lazy var devNagariEventDetailsCollectionView: UICollectionViewController = {
+//        let collectionView = EventsCollectionViewController()
+//        collectionView.view.translatesAutoresizingMaskIntoConstraints = false
+//        return collectionView
+//    }()
     
-    fileprivate lazy var devNagariEventDetailsCollectionView: UICollectionViewController = {
-        let collectionView = EventsCollectionViewController()
-        collectionView.view.translatesAutoresizingMaskIntoConstraints = false
-        return collectionView
+    fileprivate lazy var calendarEventsCollectionView: UICollectionViewController = {
+        let collection = CalendarEventsCollectionViewController()
+        collection.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return collection
     }()
     
     //MARK:- LifeCycle
@@ -84,7 +91,7 @@ class TodayViewController: UIViewController {
         
         layoutConstraintsForCollectionView()
         
-        layoutConstraintsForEventsCollectionView()
+        //layoutConstraintsForEventsCollectionView()
         
     }
     
@@ -124,33 +131,33 @@ class TodayViewController: UIViewController {
     
     func layoutConstraintsForCollectionView () {
         
-        view.addSubview(devNagariDaysCollectionView.view)
+        view.addSubview(calendarEventsCollectionView.view)
         
-        addChild(devNagariDaysCollectionView)
+        addChild(calendarEventsCollectionView)
         
-        devNagariDaysCollectionView.didMove(toParent: self)
+        calendarEventsCollectionView.didMove(toParent: self)
         
         NSLayoutConstraint.activate([
-            devNagariDaysCollectionView.view.topAnchor.constraint(equalTo: containterView.bottomAnchor),
-            devNagariDaysCollectionView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            devNagariDaysCollectionView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            devNagariDaysCollectionView.view.heightAnchor.constraint(equalToConstant: 280)
+            calendarEventsCollectionView.view.topAnchor.constraint(equalTo: containterView.bottomAnchor),
+            calendarEventsCollectionView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            calendarEventsCollectionView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            calendarEventsCollectionView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
-    func layoutConstraintsForEventsCollectionView() {
-        view.addSubview(devNagariEventDetailsCollectionView.view)
-        addChild(devNagariEventDetailsCollectionView)
-        
-        devNagariEventDetailsCollectionView.didMove(toParent: self)
-        
-        NSLayoutConstraint.activate([
-            devNagariEventDetailsCollectionView.view.topAnchor.constraint(equalTo: devNagariDaysCollectionView.view.bottomAnchor),
-            devNagariEventDetailsCollectionView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            devNagariEventDetailsCollectionView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            devNagariEventDetailsCollectionView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-    }
-    
+//    func layoutConstraintsForEventsCollectionView() {
+//        view.addSubview(devNagariEventDetailsCollectionView.view)
+//        addChild(devNagariEventDetailsCollectionView)
+//
+//        devNagariEventDetailsCollectionView.didMove(toParent: self)
+//
+//        NSLayoutConstraint.activate([
+//            devNagariEventDetailsCollectionView.view.topAnchor.constraint(equalTo: devNagariDaysCollectionView.view.bottomAnchor),
+//            devNagariEventDetailsCollectionView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            devNagariEventDetailsCollectionView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            devNagariEventDetailsCollectionView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+//        ])
+//    }
+//
     
 }

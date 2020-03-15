@@ -32,7 +32,7 @@ class MonthViewController: UIViewController {
         
         collectionView.view.translatesAutoresizingMaskIntoConstraints = false
         collectionView.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        collectionView.view.heightAnchor.constraint(equalToConstant: view.frame.height - 800).isActive = true
+        collectionView.view.heightAnchor.constraint(equalToConstant: view.frame.height - 750).isActive = true
         collectionView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         collectionView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
