@@ -60,20 +60,7 @@ class TodayViewController: UIViewController {
         label.textAlignment = .left
         return label
     }()
-    
-//    fileprivate lazy var devNagariDaysCollectionView: UICollectionViewController = {
-//        let collectionView = CalendarCollectionViewController()
-//        collectionView.view.translatesAutoresizingMaskIntoConstraints = false
-//        collectionView.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        return collectionView
-//    }()
-//
-//    fileprivate lazy var devNagariEventDetailsCollectionView: UICollectionViewController = {
-//        let collectionView = EventsCollectionViewController()
-//        collectionView.view.translatesAutoresizingMaskIntoConstraints = false
-//        return collectionView
-//    }()
-    
+        
     fileprivate lazy var calendarEventsCollectionView: UICollectionViewController = {
         let collection = CalendarEventsCollectionViewController()
         collection.view.translatesAutoresizingMaskIntoConstraints = false
@@ -90,9 +77,6 @@ class TodayViewController: UIViewController {
         layoutConstraintsForContainerView()
         
         layoutConstraintsForCollectionView()
-        
-        //layoutConstraintsForEventsCollectionView()
-        
     }
     
     //MARK:- UI Layouts
@@ -144,20 +128,4 @@ class TodayViewController: UIViewController {
             calendarEventsCollectionView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
-//    func layoutConstraintsForEventsCollectionView() {
-//        view.addSubview(devNagariEventDetailsCollectionView.view)
-//        addChild(devNagariEventDetailsCollectionView)
-//
-//        devNagariEventDetailsCollectionView.didMove(toParent: self)
-//
-//        NSLayoutConstraint.activate([
-//            devNagariEventDetailsCollectionView.view.topAnchor.constraint(equalTo: devNagariDaysCollectionView.view.bottomAnchor),
-//            devNagariEventDetailsCollectionView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            devNagariEventDetailsCollectionView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            devNagariEventDetailsCollectionView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//        ])
-//    }
-//
-    
 }

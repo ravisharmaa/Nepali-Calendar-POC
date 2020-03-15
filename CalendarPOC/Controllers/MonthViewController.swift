@@ -9,6 +9,20 @@ import UIKit
 
 class MonthViewController: UIViewController {
     
+    fileprivate lazy var monthCollectionView: UICollectionViewController = {
+        let collection = MonthsCollectionViewController()
+        collection.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return collection
+    }()
+    
+    fileprivate lazy var calendarEventsCollectionView: UICollectionViewController = {
+        let collection = CalendarEventsCollectionViewController()
+        collection.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return collection
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,46 +31,23 @@ class MonthViewController: UIViewController {
         layoutMonthsCollectionView()
     }
     
-    
     func layoutMonthsCollectionView() {
-        let collectionView = MonthsCollectionViewController()
+        
+        addChild(monthCollectionView)
+        
+        monthCollectionView.didMove(toParent: self)
+        monthCollectionView.view.translatesAutoresizingMaskIntoConstraints = false
+        monthCollectionView.view.heightAnchor.constraint(equalToConstant: view.frame.height - 750).isActive = true
+        
+        addChild(calendarEventsCollectionView)
+        calendarEventsCollectionView.didMove(toParent: self)
         
         
-        addChild(collectionView)
-        
-        collectionView.didMove(toParent: self)
-        
-        collectionView.view.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(collectionView.view)
-        
-        collectionView.view.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        collectionView.view.heightAnchor.constraint(equalToConstant: view.frame.height - 750).isActive = true
-        collectionView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        collectionView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        
-        let calendarCollectionView = CalendarCollectionViewController()
-        
-        addChild(calendarCollectionView)
-        calendarCollectionView.didMove(toParent: self)
-        
-        calendarCollectionView.view.translatesAutoresizingMaskIntoConstraints = false
-        
-        calendarCollectionView.view.heightAnchor.constraint(equalToConstant: 300).isActive = true
-       
-        
-        let eventsCollectionView = EventsCollectionViewController()
-        
-        addChild(eventsCollectionView)
-        
-        eventsCollectionView.didMove(toParent: self)
+        calendarEventsCollectionView.didMove(toParent: self)
         
         let stackView: UIStackView = UIStackView(arrangedSubviews: [
-          calendarCollectionView.view, eventsCollectionView.view
+            monthCollectionView.view, calendarEventsCollectionView.view
         ])
-        
-        //stackView.distribution = .fillEqually
         
         stackView.axis = .vertical
         
@@ -66,11 +57,10 @@ class MonthViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView.topAnchor.constraint(equalTo: collectionView.view.bottomAnchor),
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             
         ])
-        
     }
 }

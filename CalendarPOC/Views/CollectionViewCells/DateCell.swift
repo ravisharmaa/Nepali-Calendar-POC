@@ -40,14 +40,14 @@ class DateCell: UICollectionViewCell {
         addSubview(containerView)
         containerView.addSubview(dateLabel)
         
-        containerView.layer.cornerRadius = self.frame.height / 2
+        containerView.layer.cornerRadius = (self.frame.height - 10 ) / 2
         containerView.alpha = 1
         
         NSLayoutConstraint.activate([
-            containerView.heightAnchor.constraint(equalTo: contentView.heightAnchor),
-            containerView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-            dateLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            dateLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+            containerView.heightAnchor.constraint(equalToConstant: contentView.frame.height - 10),
+            containerView.widthAnchor.constraint(equalToConstant: contentView.frame.width - 10),
+            dateLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            dateLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
         ])
     }
     

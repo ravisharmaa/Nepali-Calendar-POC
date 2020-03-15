@@ -11,16 +11,15 @@ import UIKit
 class CalendarEventsCollectionViewController: UICollectionViewController {
         
     init() {
-        let layout = UICollectionViewFlowLayout()
+        let layout = EventLayout()
         
         layout.scrollDirection = .vertical
         
         super.init(collectionViewLayout: layout)
                 
-        collectionView.register(EventsCell.self, forCellWithReuseIdentifier: "testCell")
+        collectionView.register(EventsCell.self, forCellWithReuseIdentifier: ReuseIdentifiers.EventsCell.rawValue)
         
-        collectionView.register(CalendarCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
-        
+        collectionView.register(CalendarCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ReuseIdentifiers.CalendarHeader.rawValue)
         
         collectionView.backgroundColor = #colorLiteral(red: 0.09018407017, green: 0.0902037397, blue: 0.09017974883, alpha: 1)
     }
@@ -30,7 +29,7 @@ class CalendarEventsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as! CalendarCollectionViewHeader
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ReuseIdentifiers.CalendarHeader.rawValue, for: indexPath) as! CalendarCollectionViewHeader
        
         return header
     }
@@ -44,9 +43,13 @@ class CalendarEventsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"testCell", for: indexPath) as! EventsCell
-         
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:ReuseIdentifiers.EventsCell.rawValue, for: indexPath) as! EventsCell
         return cell
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
     }
     
     

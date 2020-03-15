@@ -15,7 +15,7 @@ class CalendarCollectionViewController: UICollectionViewController {
         layout.scrollDirection = .vertical
         super.init(collectionViewLayout: layout)
         collectionView.backgroundColor = #colorLiteral(red: 0.09018407017, green: 0.0902037397, blue: 0.09017974883, alpha: 1)
-        //collectionView.backgroundColor = .red
+        collectionView.isScrollEnabled = false
     }
     
     required init?(coder: NSCoder) {
@@ -24,16 +24,29 @@ class CalendarCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.register(DateCell.self, forCellWithReuseIdentifier: "reuseMe")
+        collectionView.register(DateCell.self, forCellWithReuseIdentifier: ReuseIdentifiers.DatesCell.rawValue)
+        collectionView.register(DaysListCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "daysList")
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 30
     }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "daysList", for: indexPath) as! DaysListCollectionViewHeader
+        
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return .init(width: view.frame.width, height: 38)
+    }
+    
+    
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseMe", for: indexPath) as! DateCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseIdentifiers.DatesCell.rawValue, for: indexPath) as! DateCell
         
         cell.populate(date: indexPath.item + 1)
         
@@ -57,7 +70,7 @@ extension CalendarCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 10, left: 30, bottom: 0, right: 10)
+        return .init(top: 0, left: 30, bottom: 30, right: 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

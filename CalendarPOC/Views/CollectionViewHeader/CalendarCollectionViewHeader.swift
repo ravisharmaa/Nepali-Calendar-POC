@@ -11,14 +11,16 @@ import UIKit
 class CalendarCollectionViewHeader: UICollectionReusableView {
     
     
-    let calendarController = CalendarCollectionViewController()
+    fileprivate lazy var calendarController: CalendarCollectionViewController = {
+        let controller = CalendarCollectionViewController()
+        controller.view.translatesAutoresizingMaskIntoConstraints = false
+        return controller
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(calendarController.view)
-        
-        calendarController.view.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             calendarController.view.topAnchor.constraint(equalTo: topAnchor),

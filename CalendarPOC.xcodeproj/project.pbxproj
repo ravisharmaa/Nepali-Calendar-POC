@@ -13,6 +13,8 @@
 		223F21BC241CCEE50078349B /* EventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F21BB241CCEE50078349B /* EventsCollectionViewController.swift */; };
 		223F21BF241CD3900078349B /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F21BE241CD3900078349B /* MonthViewController.swift */; };
 		2254CB90241C72DF0017ED21 /* EventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2254CB8F241C72DF0017ED21 /* EventsCell.swift */; };
+		2284D92A241E91D8007AF1DD /* DaysListCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2284D929241E91D8007AF1DD /* DaysListCollectionViewHeader.swift */; };
+		2284D92D241E9B6B007AF1DD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2284D92C241E9B6B007AF1DD /* Constants.swift */; };
 		2287A48B241E2D5B0003E736 /* CalendarEventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287A48A241E2D5B0003E736 /* CalendarEventsCollectionViewController.swift */; };
 		2287A48E241E30F00003E736 /* CalendarCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287A48D241E30F00003E736 /* CalendarCollectionViewHeader.swift */; };
 		2290B313241CAA7E0065F2DD /* EventLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290B312241CAA7E0065F2DD /* EventLayout.swift */; };
@@ -31,6 +33,8 @@
 		223F21BB241CCEE50078349B /* EventsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewController.swift; sourceTree = "<group>"; };
 		223F21BE241CD3900078349B /* MonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
 		2254CB8F241C72DF0017ED21 /* EventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
+		2284D929241E91D8007AF1DD /* DaysListCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysListCollectionViewHeader.swift; sourceTree = "<group>"; };
+		2284D92C241E9B6B007AF1DD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2287A48A241E2D5B0003E736 /* CalendarEventsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventsCollectionViewController.swift; sourceTree = "<group>"; };
 		2287A48D241E30F00003E736 /* CalendarCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewHeader.swift; sourceTree = "<group>"; };
 		2290B312241CAA7E0065F2DD /* EventLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLayout.swift; sourceTree = "<group>"; };
@@ -95,10 +99,19 @@
 			path = CollectionViewControllers;
 			sourceTree = "<group>";
 		};
+		2284D92B241E9B44007AF1DD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2284D92C241E9B6B007AF1DD /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		2287A48C241E30D90003E736 /* CollectionViewHeader */ = {
 			isa = PBXGroup;
 			children = (
 				2287A48D241E30F00003E736 /* CalendarCollectionViewHeader.swift */,
+				2284D929241E91D8007AF1DD /* DaysListCollectionViewHeader.swift */,
 			);
 			path = CollectionViewHeader;
 			sourceTree = "<group>";
@@ -130,6 +143,7 @@
 		22F892F8241A8D0D00AF0852 /* CalendarPOC */ = {
 			isa = PBXGroup;
 			children = (
+				2284D92B241E9B44007AF1DD /* Utils */,
 				2290B311241CAA6B0065F2DD /* Customizations */,
 				2228654D241B15B400FA091A /* Views */,
 				2228654C241B159D00FA091A /* Controllers */,
@@ -217,11 +231,13 @@
 				22DF6C77241AA55400967FFD /* TodayViewController.swift in Sources */,
 				2287A48B241E2D5B0003E736 /* CalendarEventsCollectionViewController.swift in Sources */,
 				22286549241B132900FA091A /* DateCell.swift in Sources */,
+				2284D92D241E9B6B007AF1DD /* Constants.swift in Sources */,
 				2254CB90241C72DF0017ED21 /* EventsCell.swift in Sources */,
 				222952D4241CD47300E470EA /* MonthsCollectionViewController.swift in Sources */,
 				223F21BC241CCEE50078349B /* EventsCollectionViewController.swift in Sources */,
 				2287A48E241E30F00003E736 /* CalendarCollectionViewHeader.swift in Sources */,
 				22F892FE241A8D0D00AF0852 /* ViewController.swift in Sources */,
+				2284D92A241E91D8007AF1DD /* DaysListCollectionViewHeader.swift in Sources */,
 				22F892FA241A8D0D00AF0852 /* AppDelegate.swift in Sources */,
 				22F892FC241A8D0D00AF0852 /* SceneDelegate.swift in Sources */,
 				2290B313241CAA7E0065F2DD /* EventLayout.swift in Sources */,
