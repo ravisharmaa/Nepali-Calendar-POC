@@ -18,6 +18,12 @@
 		2287A48B241E2D5B0003E736 /* CalendarEventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287A48A241E2D5B0003E736 /* CalendarEventsCollectionViewController.swift */; };
 		2287A48E241E30F00003E736 /* CalendarCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287A48D241E30F00003E736 /* CalendarCollectionViewHeader.swift */; };
 		2290B313241CAA7E0065F2DD /* EventLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290B312241CAA7E0065F2DD /* EventLayout.swift */; };
+		22B225D0241FBBD2004AB45E /* Yantramanav-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22B225CA241FBBD2004AB45E /* Yantramanav-Medium.ttf */; };
+		22B225D1241FBBD2004AB45E /* Yantramanav-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22B225CB241FBBD2004AB45E /* Yantramanav-Light.ttf */; };
+		22B225D2241FBBD2004AB45E /* Yantramanav-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22B225CC241FBBD2004AB45E /* Yantramanav-Regular.ttf */; };
+		22B225D3241FBBD2004AB45E /* Yantramanav-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22B225CD241FBBD2004AB45E /* Yantramanav-Black.ttf */; };
+		22B225D4241FBBD2004AB45E /* Yantramanav-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22B225CE241FBBD2004AB45E /* Yantramanav-Bold.ttf */; };
+		22B225D5241FBBD2004AB45E /* Yantramanav-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22B225CF241FBBD2004AB45E /* Yantramanav-Thin.ttf */; };
 		22DF6C77241AA55400967FFD /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF6C76241AA55400967FFD /* TodayViewController.swift */; };
 		22F892FA241A8D0D00AF0852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F892F9241A8D0D00AF0852 /* AppDelegate.swift */; };
 		22F892FC241A8D0D00AF0852 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F892FB241A8D0D00AF0852 /* SceneDelegate.swift */; };
@@ -38,6 +44,12 @@
 		2287A48A241E2D5B0003E736 /* CalendarEventsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventsCollectionViewController.swift; sourceTree = "<group>"; };
 		2287A48D241E30F00003E736 /* CalendarCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewHeader.swift; sourceTree = "<group>"; };
 		2290B312241CAA7E0065F2DD /* EventLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLayout.swift; sourceTree = "<group>"; };
+		22B225CA241FBBD2004AB45E /* Yantramanav-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Yantramanav-Medium.ttf"; sourceTree = "<group>"; };
+		22B225CB241FBBD2004AB45E /* Yantramanav-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Yantramanav-Light.ttf"; sourceTree = "<group>"; };
+		22B225CC241FBBD2004AB45E /* Yantramanav-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Yantramanav-Regular.ttf"; sourceTree = "<group>"; };
+		22B225CD241FBBD2004AB45E /* Yantramanav-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Yantramanav-Black.ttf"; sourceTree = "<group>"; };
+		22B225CE241FBBD2004AB45E /* Yantramanav-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Yantramanav-Bold.ttf"; sourceTree = "<group>"; };
+		22B225CF241FBBD2004AB45E /* Yantramanav-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Yantramanav-Thin.ttf"; sourceTree = "<group>"; };
 		22DF6C76241AA55400967FFD /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		22F892F6241A8D0D00AF0852 /* CalendarPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F892F9241A8D0D00AF0852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +71,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		221709A3241FB71800CA889E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				22B225CD241FBBD2004AB45E /* Yantramanav-Black.ttf */,
+				22B225CE241FBBD2004AB45E /* Yantramanav-Bold.ttf */,
+				22B225CB241FBBD2004AB45E /* Yantramanav-Light.ttf */,
+				22B225CA241FBBD2004AB45E /* Yantramanav-Medium.ttf */,
+				22B225CC241FBBD2004AB45E /* Yantramanav-Regular.ttf */,
+				22B225CF241FBBD2004AB45E /* Yantramanav-Thin.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		2228654C241B159D00FA091A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +168,7 @@
 		22F892F8241A8D0D00AF0852 /* CalendarPOC */ = {
 			isa = PBXGroup;
 			children = (
+				221709A3241FB71800CA889E /* Fonts */,
 				2284D92B241E9B44007AF1DD /* Utils */,
 				2290B311241CAA6B0065F2DD /* Customizations */,
 				2228654D241B15B400FA091A /* Views */,
@@ -214,8 +240,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B225D1241FBBD2004AB45E /* Yantramanav-Light.ttf in Resources */,
 				22F89306241A8D0F00AF0852 /* LaunchScreen.storyboard in Resources */,
+				22B225D5241FBBD2004AB45E /* Yantramanav-Thin.ttf in Resources */,
 				22F89303241A8D0F00AF0852 /* Assets.xcassets in Resources */,
+				22B225D4241FBBD2004AB45E /* Yantramanav-Bold.ttf in Resources */,
+				22B225D3241FBBD2004AB45E /* Yantramanav-Black.ttf in Resources */,
+				22B225D0241FBBD2004AB45E /* Yantramanav-Medium.ttf in Resources */,
+				22B225D2241FBBD2004AB45E /* Yantramanav-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

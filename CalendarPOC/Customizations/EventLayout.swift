@@ -16,23 +16,30 @@ class EventLayout: UICollectionViewFlowLayout {
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        
         let layoutAttributes = super.layoutAttributesForElements(in: rect) ?? []
-        let width = self.minimumLineSpacing 
+        
+        let width = self.minimumLineSpacing
         
         var decorationAttributes: [UICollectionViewLayoutAttributes] = []
         
-        for layoutAttribute in layoutAttributes where layoutAttribute.indexPath.item > 0 {
-            let separatorView = UICollectionViewLayoutAttributes(forDecorationViewOfKind: "SeparatorView", with: layoutAttribute.indexPath)
+        for layoutAttribute in layoutAttributes {
             
-            let cellFrame = layoutAttribute.frame
+            if !(layoutAttribute.representedElementKind == UICollectionView.elementKindSectionHeader || layoutAttribute.representedElementKind == UICollectionView.elementKindSectionFooter) {
+                
+                let separatorView = UICollectionViewLayoutAttributes(forDecorationViewOfKind: "SeparatorView", with: layoutAttribute.indexPath)
+                
+                let cellFrame = layoutAttribute.frame
+                
+                separatorView.frame = CGRect(x: cellFrame.origin.x,
+                                             y: cellFrame.origin.y - width,
+                                             width: cellFrame.size.width,
+                                             height: width - 9)
+                
+                separatorView.zIndex = Int.max
+                decorationAttributes.append(separatorView)
+            }
             
-            separatorView.frame = CGRect(x: cellFrame.origin.x,
-                                         y: cellFrame.origin.y - width,
-                                         width: cellFrame.size.width,
-                                         height: width - 9)
-            
-            separatorView.zIndex = Int.max
-            decorationAttributes.append(separatorView)
         }
         
         return layoutAttributes + decorationAttributes
@@ -41,7 +48,7 @@ class EventLayout: UICollectionViewFlowLayout {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
+    
 }
 
 

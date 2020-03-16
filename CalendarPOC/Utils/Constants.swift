@@ -24,3 +24,13 @@ enum ReuseIdentifiers: String {
     case CalendarHeader = "CalendarHeader"
     case DatesCell = "DateCell"
 }
+
+enum Font: String {
+    case YantraManavLight = "Yantramanav"
+    case YantramanavBlack = "Yantramanav-Black"
+    case YantramanavMedium = "Yantramanav-Medium"
+    case YantramanavRegular = "Yantramanav-Regular"
+    case YantramanavBold = "Yantramanav-Bold"
+    case YantramanavThin = "Yantramanav-Thin"
+}
+

@@ -19,7 +19,7 @@ class DaysListCollectionViewHeader: UICollectionReusableView {
         
         for i in 1...7 {
             let label = UILabel()
-            label.font = UIFont(name: "DevanagariSangamMN", size: 20)
+            label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 20)
             switch i {
             case 1:
                 label.text = Days.S.rawValue

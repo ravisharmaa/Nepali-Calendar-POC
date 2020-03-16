@@ -37,7 +37,10 @@ class MonthsCollectionViewController: UICollectionViewController {
 extension MonthsCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: 150, height: 70)
+        let availableHeigth = collectionView.frame.height
+        let insets: CGFloat = 5 + 5
+        let height = availableHeigth - insets
+        return .init(width: 150, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
