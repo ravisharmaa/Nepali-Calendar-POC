@@ -37,7 +37,9 @@ class MonthViewController: UIViewController {
         
         monthCollectionView.didMove(toParent: self)
         monthCollectionView.view.translatesAutoresizingMaskIntoConstraints = false
-        monthCollectionView.view.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
+       
+        monthCollectionView.view.heightAnchor.constraint(equalToConstant: 150).isActive = true
         
         addChild(calendarEventsCollectionView)
         calendarEventsCollectionView.didMove(toParent: self)
@@ -46,7 +48,7 @@ class MonthViewController: UIViewController {
         calendarEventsCollectionView.didMove(toParent: self)
         
         let stackView: UIStackView = UIStackView(arrangedSubviews: [
-            monthCollectionView.view, calendarEventsCollectionView.view
+           monthCollectionView.view, calendarEventsCollectionView.view
         ])
         
         stackView.axis = .vertical
@@ -57,7 +59,7 @@ class MonthViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            stackView.topAnchor.constraint(equalTo: view.topAnchor),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             

@@ -57,17 +57,17 @@ extension CalendarEventsCollectionViewController: UICollectionViewDelegateFlowLa
         
         let availableWidth: CGFloat = collectionView.frame.width
         
-        let sectionInsetsLeftAndRight: CGFloat = 30 + 10
+        let sectionInsetsLeftAndRight: CGFloat = 40 + 40
         
         let width = (availableWidth - sectionInsetsLeftAndRight)
         
-        return .init(width: width, height: 70)
+        return .init(width: width, height: 50)
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return .init(top: 10, left: 30, bottom: 0, right: 10)
+        return .init(top: 10, left: 40, bottom: 0, right: 40)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

@@ -61,8 +61,7 @@ class EventsCell: UICollectionViewCell {
         ])
         
         stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 4
+        stackView.spacing = 3
         
         addSubview(stackView)
         
@@ -72,8 +71,8 @@ class EventsCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: self.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }

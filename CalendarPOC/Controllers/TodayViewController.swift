@@ -90,7 +90,7 @@ class TodayViewController: UIViewController {
             containterView.topAnchor.constraint(equalTo: view.topAnchor),
             containterView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             containterView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            containterView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4)
+            //containterView.heightAnchor.constraint(equalTo: monthDayYearLabel.topAnchor, multiplier: 0.4)
         ])
         
         [devNagariDateLabel,
@@ -109,6 +109,7 @@ class TodayViewController: UIViewController {
             devNagariMonthAndYearLabel.topAnchor.constraint(equalTo: devNagariDayLabel.bottomAnchor),
             devNagariPanchangaLabel.topAnchor.constraint(equalTo: devNagariMonthAndYearLabel.bottomAnchor, constant: 18),
             monthDayYearLabel.topAnchor.constraint(equalTo: devNagariPanchangaLabel.bottomAnchor, constant: 3),
+            monthDayYearLabel.bottomAnchor.constraint(equalTo: containterView.bottomAnchor, constant: -32)
         ])
         
     }
