@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22154D73241FF5E4001D20AD /* MonthsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22154D72241FF5E4001D20AD /* MonthsCell.swift */; };
 		22286549241B132900FA091A /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22286548241B132900FA091A /* DateCell.swift */; };
 		222952D4241CD47300E470EA /* MonthsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222952D3241CD47300E470EA /* MonthsCollectionViewController.swift */; };
 		223F21BA241CBC530078349B /* CalendarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F21B9241CBC530078349B /* CalendarCollectionViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22154D72241FF5E4001D20AD /* MonthsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsCell.swift; sourceTree = "<group>"; };
 		22286548241B132900FA091A /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		222952D3241CD47300E470EA /* MonthsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsCollectionViewController.swift; sourceTree = "<group>"; };
 		223F21B9241CBC530078349B /* CalendarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				22286548241B132900FA091A /* DateCell.swift */,
 				2254CB8F241C72DF0017ED21 /* EventsCell.swift */,
+				22154D72241FF5E4001D20AD /* MonthsCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				223F21BF241CD3900078349B /* MonthViewController.swift in Sources */,
 				22DF6C77241AA55400967FFD /* TodayViewController.swift in Sources */,
 				2287A48B241E2D5B0003E736 /* CalendarEventsCollectionViewController.swift in Sources */,
+				22154D73241FF5E4001D20AD /* MonthsCell.swift in Sources */,
 				22286549241B132900FA091A /* DateCell.swift in Sources */,
 				2284D92D241E9B6B007AF1DD /* Constants.swift in Sources */,
 				2254CB90241C72DF0017ED21 /* EventsCell.swift in Sources */,
@@ -417,7 +421,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Ravi.CalendarPOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -434,7 +438,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Ravi.CalendarPOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

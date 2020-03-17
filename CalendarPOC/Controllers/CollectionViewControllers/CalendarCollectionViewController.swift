@@ -14,8 +14,9 @@ class CalendarCollectionViewController: UICollectionViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         super.init(collectionViewLayout: layout)
-        collectionView.backgroundColor = #colorLiteral(red: 0.09018407017, green: 0.0902037397, blue: 0.09017974883, alpha: 1)
+        collectionView.backgroundColor = .systemBackground
         collectionView.isScrollEnabled = false
+        collectionView.showsVerticalScrollIndicator = false
     }
     
     required init?(coder: NSCoder) {

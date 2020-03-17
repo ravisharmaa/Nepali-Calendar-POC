@@ -18,7 +18,6 @@ enum Days: String {
     case SAT = "श"
 }
 
-
 enum ReuseIdentifiers: String {
     case EventsCell = "EventsCell"
     case CalendarHeader = "CalendarHeader"

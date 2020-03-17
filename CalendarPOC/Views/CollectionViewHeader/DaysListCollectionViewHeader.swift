@@ -15,11 +15,11 @@ class DaysListCollectionViewHeader: UICollectionReusableView {
         
         let stackView: UIStackView = UIStackView()
         
-        backgroundColor =  #colorLiteral(red: 0.09018407017, green: 0.0902037397, blue: 0.09017974883, alpha: 1)
+        backgroundColor =  .systemBackground
         
         for i in 1...7 {
             let label = UILabel()
-            label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 20)
+            label.font = UIFont(name: Font.YantramanavMedium.rawValue, size: 13)
             switch i {
             case 1:
                 label.text = Days.S.rawValue
@@ -36,7 +36,7 @@ class DaysListCollectionViewHeader: UICollectionReusableView {
             default:
                 label.text = Days.SAT.rawValue
             }
-            label.textColor = .white
+            label.textColor = .label
             label.textAlignment = .center
             stackView.addArrangedSubview(label)
         }

@@ -7,43 +7,43 @@ class TodayViewController: UIViewController {
     
     fileprivate lazy var containterView: UIView = {
         let containerView = UIView()
-        containerView.backgroundColor = .black
+        containerView.backgroundColor = .systemGray4
         containerView.translatesAutoresizingMaskIntoConstraints = false
         return containerView
     }()
     
     fileprivate lazy var devNagariDateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 75)
-        label.text = "७"
-        label.textColor = .white
+        label.font = UIFont(name: Font.YantraManavLight.rawValue, size: 66)
+        label.text = "१७"
+        label.textColor = .label
         label.textAlignment = .left
         return label
     }()
     
     fileprivate lazy var devNagariDayLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 30)
+        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 35)
         label.text = "आइतबार"
-        label.textColor = .white
+        label.textColor = .label
         label.textAlignment = .left
         return label
     }()
     
     fileprivate lazy var devNagariMonthAndYearLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 30)
+        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 39)
         label.text = "फागुन २०७६"
-        label.textColor = .white
+        label.textColor = .label
         label.textAlignment = .left
         return label
     }()
     
     fileprivate lazy var devNagariPanchangaLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 20)
+        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 16)
         label.text = "तृतिया पञ्चाङ्ग: ध्रुव भाद्र चित्रा"
-        label.textColor = .white
+        label.textColor = .label
         label.textAlignment = .left
         return label
     }()
@@ -52,11 +52,11 @@ class TodayViewController: UIViewController {
     
     fileprivate lazy var monthDayYearLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 16)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
         label.text = dateFormatter.string(from:Date())
-        label.textColor = .white
+        label.textColor = .label
         label.textAlignment = .left
         return label
     }()
@@ -104,10 +104,10 @@ class TodayViewController: UIViewController {
         }
         
         NSLayoutConstraint.activate([
-            devNagariDateLabel.topAnchor.constraint(equalTo: containterView.topAnchor, constant: 40),
+            devNagariDateLabel.topAnchor.constraint(equalTo: containterView.topAnchor, constant: 78),
             devNagariDayLabel.topAnchor.constraint(equalTo: devNagariDateLabel.bottomAnchor),
             devNagariMonthAndYearLabel.topAnchor.constraint(equalTo: devNagariDayLabel.bottomAnchor),
-            devNagariPanchangaLabel.topAnchor.constraint(equalTo: devNagariMonthAndYearLabel.bottomAnchor, constant: 30),
+            devNagariPanchangaLabel.topAnchor.constraint(equalTo: devNagariMonthAndYearLabel.bottomAnchor, constant: 18),
             monthDayYearLabel.topAnchor.constraint(equalTo: devNagariPanchangaLabel.bottomAnchor, constant: 3),
         ])
         

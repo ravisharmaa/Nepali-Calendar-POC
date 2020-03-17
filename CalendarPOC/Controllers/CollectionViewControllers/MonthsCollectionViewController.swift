@@ -10,12 +10,19 @@ import UIKit
 
 class MonthsCollectionViewController: UICollectionViewController {
     
+    let monthName:[String] = [
+        "बैशाख", "जेठ", "असार", "श्रावण", "भदौ", "आश्विन", "कार्तिक", "मंसिर", "पुष", "माघ", "फाल्गुन", "चैत्र"
+    ]
+    
+    //add a subview to wrap the collection view
+    
     init() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         super.init(collectionViewLayout: layout)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "monthsCell")
-        collectionView.backgroundColor = .yellow
+        collectionView.register(MonthsCell.self, forCellWithReuseIdentifier: "monthsCell")
+        collectionView.backgroundColor = .systemGray4
+        collectionView.showsHorizontalScrollIndicator = false
     }
     
     required init?(coder: NSCoder) {
@@ -27,9 +34,10 @@ class MonthsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "monthsCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "monthsCell", for: indexPath) as! MonthsCell
         
-        cell.backgroundColor = .red
+        cell.monthNameLabel.text = monthName[indexPath.item]
+        //cell.backgroundColor = .red
         return cell
     }
 }
@@ -40,10 +48,18 @@ extension MonthsCollectionViewController: UICollectionViewDelegateFlowLayout {
         let availableHeigth = collectionView.frame.height
         let insets: CGFloat = 5 + 5
         let height = availableHeigth - insets
-        return .init(width: 150, height: height)
+        return .init(width: 100, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 5, left: 20, bottom: 5, right: 5)
+        return .init(top: 5, left: 20, bottom: 5, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
     }
 }

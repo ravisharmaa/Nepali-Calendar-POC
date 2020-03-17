@@ -7,7 +7,6 @@ class ViewController: UIViewController  {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.isPagingEnabled = true
-        
         return scrollView
     }()
     
@@ -36,7 +35,7 @@ class ViewController: UIViewController  {
         
         super.viewDidLoad()
         
-        view.backgroundColor = .black
+        view.backgroundColor = .systemBackground
     
         view.addSubview(scrollView)
         
@@ -66,6 +65,8 @@ class ViewController: UIViewController  {
             stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor)
         ])
         
+        //removes bounces from scroll view
+        scrollView.bounces = false
     }
     
     

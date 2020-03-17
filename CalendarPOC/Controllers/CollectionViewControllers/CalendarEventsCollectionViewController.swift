@@ -21,7 +21,8 @@ class CalendarEventsCollectionViewController: UICollectionViewController {
         
         collectionView.register(CalendarCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ReuseIdentifiers.CalendarHeader.rawValue)
         
-        collectionView.backgroundColor = #colorLiteral(red: 0.09018407017, green: 0.0902037397, blue: 0.09017974883, alpha: 1)
+        collectionView.backgroundColor = .systemBackground
+        collectionView.showsVerticalScrollIndicator = false
     }
     
     required init?(coder: NSCoder) {
@@ -35,7 +36,7 @@ class CalendarEventsCollectionViewController: UICollectionViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-           return CGSize(width: view.frame.width, height: 300)
+           return CGSize(width: view.frame.width, height: 350)
        }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -46,12 +47,6 @@ class CalendarEventsCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:ReuseIdentifiers.EventsCell.rawValue, for: indexPath) as! EventsCell
         return cell
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        collectionView.reloadData()
-    }
-    
     
 }
 

@@ -37,7 +37,7 @@ class MonthViewController: UIViewController {
         
         monthCollectionView.didMove(toParent: self)
         monthCollectionView.view.translatesAutoresizingMaskIntoConstraints = false
-        monthCollectionView.view.heightAnchor.constraint(equalToConstant: view.frame.height - 750).isActive = true
+        monthCollectionView.view.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         addChild(calendarEventsCollectionView)
         calendarEventsCollectionView.didMove(toParent: self)

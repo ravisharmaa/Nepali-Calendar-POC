@@ -14,27 +14,27 @@ class EventsCell: UICollectionViewCell {
     
     fileprivate lazy var eventLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantraManavLight.rawValue, size: 20)
+        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 17)
         label.text = "चैत्र संक्रान्ति"
-        label.textColor = .white
+        label.textColor = .label
         label.textAlignment = .left
         return label
     }()
     
     fileprivate lazy var eventDayLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantraManavLight.rawValue, size: 20)
+        label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 12)
         label.text = "०१ चैत"
-        label.textColor = .white
+        label.textColor = .label
         label.textAlignment = .left
         return label
     }()
     
     fileprivate lazy var eventEffectiveDay: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantraManavLight.rawValue, size: 20)
+        label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 12)
         label.text = "आज"
-        label.textColor = .white
+        label.textColor = .label
         label.textAlignment = .left
         return label
     }()
@@ -62,7 +62,7 @@ class EventsCell: UICollectionViewCell {
         
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
-        stackView.spacing = 10
+        stackView.spacing = 4
         
         addSubview(stackView)
         

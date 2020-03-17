@@ -34,7 +34,7 @@ class EventLayout: UICollectionViewFlowLayout {
                 separatorView.frame = CGRect(x: cellFrame.origin.x,
                                              y: cellFrame.origin.y - width,
                                              width: cellFrame.size.width,
-                                             height: width - 9)
+                                             height: width - 9.5)
                 
                 separatorView.zIndex = Int.max
                 decorationAttributes.append(separatorView)
@@ -55,7 +55,7 @@ class EventLayout: UICollectionViewFlowLayout {
 private final class SeparatorView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = #colorLiteral(red: 0.2325224876, green: 0.2325679958, blue: 0.2325165272, alpha: 1)
+        self.backgroundColor = .systemGray3
     }
     
     required init?(coder: NSCoder) {
