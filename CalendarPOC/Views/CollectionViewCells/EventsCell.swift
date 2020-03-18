@@ -25,7 +25,7 @@ class EventsCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 12)
         label.text = "०१ चैत"
-        label.textColor = .label
+        label.textColor = .systemGray2
         label.textAlignment = .left
         return label
     }()
@@ -34,7 +34,7 @@ class EventsCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 12)
         label.text = "आज"
-        label.textColor = .label
+        label.textColor = .systemGray2
         label.textAlignment = .left
         return label
     }()
