@@ -21,7 +21,7 @@ class MonthsCollectionViewController: UICollectionViewController {
         layout.scrollDirection = .horizontal
         super.init(collectionViewLayout: layout)
         collectionView.register(MonthsCell.self, forCellWithReuseIdentifier: "monthsCell")
-        collectionView.backgroundColor = .systemGray4
+        collectionView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
         collectionView.showsHorizontalScrollIndicator = false
     }
     
@@ -46,13 +46,13 @@ extension MonthsCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let availableHeigth = collectionView.frame.height
-        let insets: CGFloat = 5 + 5
+        let insets: CGFloat = 50
         let height = availableHeigth - insets
         return .init(width: 100, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 5, left: 20, bottom: 5, right: 10)
+        return .init(top: 50, left: 20, bottom: 0, right: 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

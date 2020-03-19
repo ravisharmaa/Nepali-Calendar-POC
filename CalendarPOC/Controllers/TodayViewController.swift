@@ -7,7 +7,8 @@ class TodayViewController: UIViewController {
     
     fileprivate lazy var containterView: UIView = {
         let containerView = UIView()
-        containerView.backgroundColor = .systemGray4
+       // containerView.backgroundColor = .systemGray4
+        containerView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         return containerView
     }()
@@ -52,9 +53,9 @@ class TodayViewController: UIViewController {
     
     fileprivate lazy var monthDayYearLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 16)
+        label.font = UIFont(name: Font.YantramanavMedium.rawValue, size: 16)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
+        dateFormatter.dateFormat = "MMM d, yyyy"
         label.text = dateFormatter.string(from:Date())
         label.textColor = .label
         label.textAlignment = .left
@@ -66,6 +67,13 @@ class TodayViewController: UIViewController {
         collection.view.translatesAutoresizingMaskIntoConstraints = false
         
         return collection
+    }()
+    
+    lazy var settingsView: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(#imageLiteral(resourceName: "menuw"), for: .normal)
+        return button
     }()
     
     //MARK:- LifeCycle

@@ -23,12 +23,21 @@ class MonthViewController: UIViewController {
         return collection
     }()
     
+    lazy var settingsView: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(#imageLiteral(resourceName: "menuw"), for: .normal)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         
         layoutMonthsCollectionView()
+        
+        layoutSettingsButton()
     }
     
     func layoutMonthsCollectionView() {
@@ -38,8 +47,8 @@ class MonthViewController: UIViewController {
         monthCollectionView.didMove(toParent: self)
         monthCollectionView.view.translatesAutoresizingMaskIntoConstraints = false
         
-       
-        monthCollectionView.view.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        
+        monthCollectionView.view.heightAnchor.constraint(equalToConstant: 180).isActive = true
         
         addChild(calendarEventsCollectionView)
         calendarEventsCollectionView.didMove(toParent: self)
@@ -48,7 +57,7 @@ class MonthViewController: UIViewController {
         calendarEventsCollectionView.didMove(toParent: self)
         
         let stackView: UIStackView = UIStackView(arrangedSubviews: [
-           monthCollectionView.view, calendarEventsCollectionView.view
+            monthCollectionView.view, calendarEventsCollectionView.view
         ])
         
         stackView.axis = .vertical
@@ -63,6 +72,18 @@ class MonthViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             
+        ])
+    }
+    
+    func layoutSettingsButton()  {
+        
+        monthCollectionView.view.addSubview(settingsView)
+        
+        NSLayoutConstraint.activate([
+            settingsView.heightAnchor.constraint(equalToConstant: 35),
+            settingsView.widthAnchor.constraint(equalToConstant: 35),
+            settingsView.topAnchor.constraint(equalTo: monthCollectionView.view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            settingsView.trailingAnchor.constraint(equalTo: monthCollectionView.view.trailingAnchor, constant: -20)
         ])
     }
 }

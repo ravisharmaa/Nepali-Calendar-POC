@@ -23,18 +23,18 @@ class EventsCell: UICollectionViewCell {
     
     fileprivate lazy var eventDayLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 12)
+        label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 14)
         label.text = "०१ चैत"
-        label.textColor = .systemGray2
+        label.textColor = .systemGray
         label.textAlignment = .left
         return label
     }()
     
     fileprivate lazy var eventEffectiveDay: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 12)
+        label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 14)
         label.text = "आज"
-        label.textColor = .systemGray2
+        label.textColor = .systemGray
         label.textAlignment = .left
         return label
     }()
@@ -61,7 +61,7 @@ class EventsCell: UICollectionViewCell {
         ])
         
         stackView.axis = .vertical
-        stackView.spacing = 3
+        stackView.spacing = 0
         
         addSubview(stackView)
         
@@ -70,10 +70,12 @@ class EventsCell: UICollectionViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: self.topAnchor),
+//            stackView.topAnchor.constraint(equalTo: self.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+//            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            //stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
     
