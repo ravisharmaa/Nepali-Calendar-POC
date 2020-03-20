@@ -18,7 +18,6 @@ class MonthsCell: UICollectionViewCell {
         return label
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(monthNameLabel)
@@ -26,8 +25,8 @@ class MonthsCell: UICollectionViewCell {
         monthNameLabel.translatesAutoresizingMaskIntoConstraints = false
         monthNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         //monthNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        monthNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-//        monthNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 30).isActive = true
+        //monthNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        monthNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 30).isActive = true
         
     }
     

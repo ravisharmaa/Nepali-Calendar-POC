@@ -26,6 +26,8 @@
 		22B225D4241FBBD2004AB45E /* Yantramanav-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22B225CE241FBBD2004AB45E /* Yantramanav-Bold.ttf */; };
 		22B225D5241FBBD2004AB45E /* Yantramanav-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22B225CF241FBBD2004AB45E /* Yantramanav-Thin.ttf */; };
 		22DF6C77241AA55400967FFD /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF6C76241AA55400967FFD /* TodayViewController.swift */; };
+		22E7A1AF2424685200D23178 /* MonthLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7A1AE2424685200D23178 /* MonthLayout.swift */; };
+		22F737682423B3F30027205E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F737672423B3F30027205E /* SettingsViewController.swift */; };
 		22F892FA241A8D0D00AF0852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F892F9241A8D0D00AF0852 /* AppDelegate.swift */; };
 		22F892FC241A8D0D00AF0852 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F892FB241A8D0D00AF0852 /* SceneDelegate.swift */; };
 		22F892FE241A8D0D00AF0852 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F892FD241A8D0D00AF0852 /* ViewController.swift */; };
@@ -53,6 +55,8 @@
 		22B225CE241FBBD2004AB45E /* Yantramanav-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Yantramanav-Bold.ttf"; sourceTree = "<group>"; };
 		22B225CF241FBBD2004AB45E /* Yantramanav-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Yantramanav-Thin.ttf"; sourceTree = "<group>"; };
 		22DF6C76241AA55400967FFD /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		22E7A1AE2424685200D23178 /* MonthLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthLayout.swift; sourceTree = "<group>"; };
+		22F737672423B3F30027205E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		22F892F6241A8D0D00AF0852 /* CalendarPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F892F9241A8D0D00AF0852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22F892FB241A8D0D00AF0852 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 			children = (
 				223F21BD241CD3530078349B /* CollectionViewControllers */,
 				22F892FD241A8D0D00AF0852 /* ViewController.swift */,
+				22F737672423B3F30027205E /* SettingsViewController.swift */,
 				22DF6C76241AA55400967FFD /* TodayViewController.swift */,
 				223F21BE241CD3900078349B /* MonthViewController.swift */,
 			);
@@ -148,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				2290B312241CAA7E0065F2DD /* EventLayout.swift */,
+				22E7A1AE2424685200D23178 /* MonthLayout.swift */,
 			);
 			path = Customizations;
 			sourceTree = "<group>";
@@ -265,6 +271,7 @@
 				223F21BF241CD3900078349B /* MonthViewController.swift in Sources */,
 				22DF6C77241AA55400967FFD /* TodayViewController.swift in Sources */,
 				2287A48B241E2D5B0003E736 /* CalendarEventsCollectionViewController.swift in Sources */,
+				22E7A1AF2424685200D23178 /* MonthLayout.swift in Sources */,
 				22154D73241FF5E4001D20AD /* MonthsCell.swift in Sources */,
 				22286549241B132900FA091A /* DateCell.swift in Sources */,
 				2284D92D241E9B6B007AF1DD /* Constants.swift in Sources */,
@@ -273,6 +280,7 @@
 				223F21BC241CCEE50078349B /* EventsCollectionViewController.swift in Sources */,
 				2287A48E241E30F00003E736 /* CalendarCollectionViewHeader.swift in Sources */,
 				22F892FE241A8D0D00AF0852 /* ViewController.swift in Sources */,
+				22F737682423B3F30027205E /* SettingsViewController.swift in Sources */,
 				2284D92A241E91D8007AF1DD /* DaysListCollectionViewHeader.swift in Sources */,
 				22F892FA241A8D0D00AF0852 /* AppDelegate.swift in Sources */,
 				22F892FC241A8D0D00AF0852 /* SceneDelegate.swift in Sources */,

@@ -27,8 +27,20 @@ class MonthViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(#imageLiteral(resourceName: "menuw"), for: .normal)
+        button.addTarget(self, action: #selector(showSettingsView), for: .touchUpInside)
         return button
     }()
+    
+    lazy var gregorianMonthName: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 16)
+        label.textColor = .label
+        label.text = "November/December"
+        label.textAlignment = .center
+        return label
+    }()
+    
+    //MARK:- LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +50,16 @@ class MonthViewController: UIViewController {
         layoutMonthsCollectionView()
         
         layoutSettingsButton()
+        
+        layoutGregorainLabel()
+        
+        //select item from the first index path
+        
+        //monthCollectionView.collectionView.layoutIfNeeded()
     }
     
+    
+    //MARK:- UI
     func layoutMonthsCollectionView() {
         
         addChild(monthCollectionView)
@@ -48,7 +68,7 @@ class MonthViewController: UIViewController {
         monthCollectionView.view.translatesAutoresizingMaskIntoConstraints = false
         
         
-        monthCollectionView.view.heightAnchor.constraint(equalToConstant: 180).isActive = true
+        monthCollectionView.view.heightAnchor.constraint(equalToConstant: 186).isActive = true
         
         addChild(calendarEventsCollectionView)
         calendarEventsCollectionView.didMove(toParent: self)
@@ -86,4 +106,31 @@ class MonthViewController: UIViewController {
             settingsView.trailingAnchor.constraint(equalTo: monthCollectionView.view.trailingAnchor, constant: -20)
         ])
     }
+    
+    
+    
+    func layoutGregorainLabel() {
+        monthCollectionView.view.addSubview(gregorianMonthName)
+        gregorianMonthName.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            gregorianMonthName.leadingAnchor.constraint(equalTo: monthCollectionView.view.safeAreaLayoutGuide.leadingAnchor, constant: 36),
+            gregorianMonthName.bottomAnchor.constraint(equalTo: monthCollectionView.view.bottomAnchor, constant: -20)
+        ])
+    }
+    
+    @objc func showSettingsView() {
+        let viewController = SettingsViewController()
+        
+        //        viewController.didTapCloseButton = {
+        //            blurEffectView.removeFromSuperview()
+        //        }
+        viewController.modalTransitionStyle = .crossDissolve
+        
+        viewController.modalPresentationStyle = .overCurrentContext
+        present(viewController, animated: true, completion: nil)
+    }
+    
+    
+    
 }

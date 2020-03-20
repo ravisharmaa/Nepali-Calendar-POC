@@ -17,7 +17,7 @@ class MonthsCollectionViewController: UICollectionViewController {
     //add a subview to wrap the collection view
     
     init() {
-        let layout = UICollectionViewFlowLayout()
+        let layout = MonthLayout()
         layout.scrollDirection = .horizontal
         super.init(collectionViewLayout: layout)
         collectionView.register(MonthsCell.self, forCellWithReuseIdentifier: "monthsCell")
@@ -37,7 +37,6 @@ class MonthsCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "monthsCell", for: indexPath) as! MonthsCell
         
         cell.monthNameLabel.text = monthName[indexPath.item]
-        //cell.backgroundColor = .red
         return cell
     }
 }
@@ -46,13 +45,13 @@ extension MonthsCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let availableHeigth = collectionView.frame.height
-        let insets: CGFloat = 50
+        let insets: CGFloat = 75
         let height = availableHeigth - insets
         return .init(width: 100, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 50, left: 20, bottom: 0, right: 10)
+        return .init(top: 75, left: 20, bottom: 0, right: 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
