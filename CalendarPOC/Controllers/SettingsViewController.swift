@@ -82,7 +82,7 @@ class SettingsViewController: UIViewController {
     fileprivate lazy var dualCalendarSwitcher: UISwitch =  {
         let button = UISwitch()
         button.isOn = false
-        button.backgroundColor = .systemBlue
+        //button.backgroundColor = .systemBlue
         
         return button
     }()
@@ -101,7 +101,7 @@ class SettingsViewController: UIViewController {
     fileprivate lazy var showHolidayOnlyLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Font.YantramanavMedium.rawValue, size: 15)
-        label.numberOfLines = 2
+        //label.numberOfLines = 2
         label.text = "Show Holidays Only"
         label.textColor = .label
         
@@ -124,8 +124,7 @@ class SettingsViewController: UIViewController {
     fileprivate lazy var holidaySwitcher: UISwitch =  {
         let button = UISwitch()
         button.isOn = false
-        button.backgroundColor = .systemBlue
-        
+        //button.backgroundColor = .systemBlue
         return button
     }()
     
@@ -195,22 +194,23 @@ class SettingsViewController: UIViewController {
         ])
         
         
-        let dateConverterLabelAndSwitcherStack = UIStackView(arrangedSubviews: [dateConverterLabel, dualCalendarSwitcher])
+        let dateConverterLabelAndSwitcherStack = UIStackView(arrangedSubviews: [dateConverterLabel,  dualCalendarSwitcher])
         dateConverterLabelAndSwitcherStack.axis = .horizontal
-        dateConverterLabelAndSwitcherStack.distribution = .fill
-        dateConverterLabelAndSwitcherStack.alignment = .trailing
+        dateConverterLabelAndSwitcherStack.distribution = .fillProportionally
+        dateConverterLabelAndSwitcherStack.alignment = .center
+        dateConverterLabelAndSwitcherStack.spacing = 170
         
-        
+        let holidayLabelAndHolidaySwitcherStack = UIStackView(arrangedSubviews: [showHolidayOnlyLabel,  holidaySwitcher])
+        holidayLabelAndHolidaySwitcherStack.axis = .horizontal
+        holidayLabelAndHolidaySwitcherStack.distribution = .fillProportionally
+        holidayLabelAndHolidaySwitcherStack.alignment = .center
+        holidayLabelAndHolidaySwitcherStack.spacing = 135
         
         
         let stackView = UIStackView(arrangedSubviews: [
-            //showMonthViewLabel,
-            //showTodayViewLabel,
-            dateConverterLabel,
-            //separatorView,
             dateConverterLabelAndSwitcherStack,
             detailLabel,
-            showHolidayOnlyLabel,
+            holidayLabelAndHolidaySwitcherStack,
             holidayDetailLabel,
             feedbackLabel,
             versionLabel
@@ -221,7 +221,6 @@ class SettingsViewController: UIViewController {
         //stackView.distribution = .fillProportionally
         
         stackView.distribution = .fillProportionally
-        
         
         
         stackView.setCustomSpacing(2, after: feedbackLabel)
