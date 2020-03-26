@@ -11,18 +11,49 @@ import UIKit
 class MonthsCollectionViewController: UICollectionViewController {
     
     let monthName:[String] = [
-        "बैशाख", "जेठ", "असार", "श्रावण", "भदौ", "आश्विन", "कार्तिक", "मंसिर", "पुष", "माघ", "फाल्गुन", "चैत्र"
+        "बैशाख", "जेठ", "असार", "श्रावण", "भदौ", "आश्विन", "कार्तिक", "मंसिर", "पुष", "माघ", "फाल्गुन", "चैत्र",
     ]
     
     //add a subview to wrap the collection view
     
     init() {
-        let layout = MonthLayout()
-        layout.scrollDirection = .horizontal
+        
+        //usage of compositional layout
+        
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(75), heightDimension: .absolute(100))
+        
+        //let itemSize = NSCollectionLayoutSize(widthDimension: .fractional(1/3), heightDimension: .absolute(100))
+    
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        //item.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 0)
+        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: .fixed(10), trailing: .fixed(10), bottom: .none)
+        
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+        section.contentInsets = NSDirectionalEdgeInsets(top: 40, leading: 10, bottom: 0, trailing: 160)
+        section.interGroupSpacing = 10
+       
+        
+        section.orthogonalScrollingBehavior = .continuous
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        
+        
         super.init(collectionViewLayout: layout)
+        
         collectionView.register(MonthsCell.self, forCellWithReuseIdentifier: "monthsCell")
+        
         collectionView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+        
         collectionView.showsHorizontalScrollIndicator = false
+        
     }
     
     required init?(coder: NSCoder) {
@@ -30,35 +61,16 @@ class MonthsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return monthName.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "monthsCell", for: indexPath) as! MonthsCell
         
+        //cell.backgroundColor = .red
+        
         cell.monthNameLabel.text = monthName[indexPath.item]
+        
         return cell
-    }
-}
-
-extension MonthsCollectionViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let availableHeigth = collectionView.frame.height
-        let insets: CGFloat = 75
-        let height = availableHeigth - insets
-        return .init(width: 100, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 75, left: 20, bottom: 0, right: 10)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0
     }
 }

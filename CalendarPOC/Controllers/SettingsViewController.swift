@@ -79,6 +79,7 @@ class SettingsViewController: UIViewController {
         
         return button
     }()
+    
     // May be closure also could the same thing of removing blurred view from
     // super view. But I thought that blurring itself is the responsibility of
     // settings view not the view controller showing it, hence I removed the

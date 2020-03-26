@@ -53,9 +53,6 @@ class MonthViewController: UIViewController {
         
         layoutGregorainLabel()
         
-        //select item from the first index path
-        
-        //monthCollectionView.collectionView.layoutIfNeeded()
     }
     
     
