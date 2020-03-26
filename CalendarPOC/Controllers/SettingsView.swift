@@ -18,9 +18,7 @@ struct SettingsView: UIViewControllerRepresentable {
     func makeUIViewController(context: UIViewControllerRepresentableContext<SettingsView>) -> MonthViewController {
         return MonthViewController()
     }
-    
     func updateUIViewController(_ uiViewController: MonthViewController, context: UIViewControllerRepresentableContext<SettingsView>) {
-        
     }
 }
 

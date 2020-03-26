@@ -10,6 +10,8 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    //MARK:- UI Elements
+    
     fileprivate lazy var settingsView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -23,24 +25,26 @@ class SettingsViewController: UIViewController {
         button.setImage(#imageLiteral(resourceName: "closeb"), for: .normal)
         button.imageView?.clipsToBounds = true
         button.imageView?.contentMode = .scaleAspectFit
-        button.imageEdgeInsets = .init(top: 0, left: 20, bottom: 20, right: 0)
+        //button.imageEdgeInsets = .init(top: 0, left: 20, bottom: 20, right: 0)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(closeSettingsView), for: .touchUpInside)
         return button
     }()
     
     fileprivate lazy var showMonthViewLabel: UILabel = {
+        let view = UIView()
+        
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 26)
+        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 18)
         label.text = "Show Month View"
         label.textColor = .label
-        
+        view.addSubview(label)
         return label
     }()
     
     fileprivate lazy var showTodayViewLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 20)
+        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 16)
         label.text = "Show Today View"
         label.textColor = .systemGray3
         
@@ -56,9 +60,10 @@ class SettingsViewController: UIViewController {
         return label
     }()
     
-    fileprivate lazy var separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray3
+    fileprivate lazy var separatorView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "line")
+        view.contentMode = .scaleToFill
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -82,12 +87,37 @@ class SettingsViewController: UIViewController {
         return button
     }()
     
-    // May be closure also could the same thing of removing blurred view from
-    // super view. But I thought that blurring itself is the responsibility of
-    // settings view not the view controller showing it, hence I removed the
-    // idea of adding closure but kept the closure as a reference.
+    fileprivate lazy var detailLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 12)
+        label.numberOfLines = 2
+        label.text = "Show both, Bikram Sambat and Gregorian \r\nCalendar in the Calendar View."
+        label.textColor = .label
+        
+        return label
+        
+    }()
     
-    //var didTapCloseButton: (()->())?
+    fileprivate lazy var feedbackLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 18)
+        label.text = "Send Feedback"
+        label.textColor = .label
+        
+        return label
+        
+    }()
+    
+    
+    fileprivate lazy var versionLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 12)
+        label.text = "Version 2.0"
+        label.textColor = .label
+        
+        return label
+        
+    }()
     
     fileprivate lazy var blurredView: UIVisualEffectView = {
         let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
@@ -95,6 +125,18 @@ class SettingsViewController: UIViewController {
         blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return blurView
     }()
+    
+    //MARK:- Reference For Future Works for Closure Based Implementations instead for Protocols
+    
+    // May be closure also could the same thing of removing blurred view from
+    // super view. But I thought that blurring itself is the responsibility of
+    // settings view not the view controller showing it, hence I removed the
+    // idea of adding closure but kept the closure as a reference.
+    
+    //var didTapCloseButton: (()->())?
+    
+    
+    //MARK:- Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,18 +155,28 @@ class SettingsViewController: UIViewController {
             
             closeButton.topAnchor.constraint(equalTo: settingsView.topAnchor, constant: 10),
             closeButton.trailingAnchor.constraint(equalTo: settingsView.trailingAnchor, constant: -10),
-            closeButton.heightAnchor.constraint(equalToConstant: 40),
-            closeButton.widthAnchor.constraint(equalToConstant: 40)
+            closeButton.heightAnchor.constraint(equalToConstant: 15),
+            closeButton.widthAnchor.constraint(equalToConstant: 15)
             
         ])
         
+        
+        
         let stackView = UIStackView(arrangedSubviews: [
-            showMonthViewLabel, showTodayViewLabel, dateConverterLabel
+            showMonthViewLabel,
+            showTodayViewLabel,
+            dateConverterLabel,
+            separatorView,
+            dualCalendarLabel,
+            detailLabel, feedbackLabel,
+            versionLabel
         ])
         
         stackView.axis = .vertical
         stackView.alignment = .leading
-        stackView.distribution = .fill
+        stackView.distribution = .fillProportionally
+        
+        stackView.setCustomSpacing(2, after: feedbackLabel)
         
         
         settingsView.addSubview(stackView)
@@ -133,9 +185,9 @@ class SettingsViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: closeButton.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: settingsView.leadingAnchor),
+            stackView.leadingAnchor.constraint(equalTo: settingsView.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: settingsView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: settingsView.bottomAnchor)
+            stackView.bottomAnchor.constraint(equalTo: settingsView.bottomAnchor, constant: -30)
             
         ])
     }
