@@ -35,7 +35,7 @@ class SettingsViewController: UIViewController {
         let view = UIView()
         
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 18)
+        label.font = UIFont(name: Font.YantramanavMedium.rawValue, size: 15)
         label.text = "Show Month View"
         label.textColor = .label
         view.addSubview(label)
@@ -44,7 +44,7 @@ class SettingsViewController: UIViewController {
     
     fileprivate lazy var showTodayViewLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 16)
+        label.font = UIFont(name: Font.YantramanavMedium.rawValue, size: 15)
         label.text = "Show Today View"
         label.textColor = .systemGray3
         
@@ -53,7 +53,7 @@ class SettingsViewController: UIViewController {
     
     fileprivate lazy var dateConverterLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 18)
+        label.font = UIFont(name: Font.YantramanavMedium.rawValue, size: 15)
         label.text = "Date Converter"
         label.textColor = .label
         
@@ -71,15 +71,15 @@ class SettingsViewController: UIViewController {
     
     fileprivate lazy var dualCalendarLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 18)
-        label.text = "Date Converter"
+        label.font = UIFont(name: Font.YantramanavMedium.rawValue, size: 15)
+        label.text = "Dual Converter View"
         label.textColor = .label
         
         return label
         
     }()
     
-    fileprivate lazy var radioButton: UISwitch =  {
+    fileprivate lazy var dualCalendarSwitcher: UISwitch =  {
         let button = UISwitch()
         button.isOn = false
         button.backgroundColor = .systemBlue
@@ -92,15 +92,49 @@ class SettingsViewController: UIViewController {
         label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 12)
         label.numberOfLines = 2
         label.text = "Show both, Bikram Sambat and Gregorian \r\nCalendar in the Calendar View."
+        label.textColor = .systemGray
+        
+        return label
+        
+    }()
+    
+    fileprivate lazy var showHolidayOnlyLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: Font.YantramanavMedium.rawValue, size: 15)
+        label.numberOfLines = 2
+        label.text = "Show Holidays Only"
         label.textColor = .label
         
         return label
         
     }()
     
+    fileprivate lazy var holidayDetailLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 12)
+        label.numberOfLines = 2
+        label.text = "Turn this on to show only holidays in the list."
+        label.textColor = .systemGray
+        
+        return label
+        
+    }()
+    
+    
+    fileprivate lazy var holidaySwitcher: UISwitch =  {
+        let button = UISwitch()
+        button.isOn = false
+        button.backgroundColor = .systemBlue
+        
+        return button
+    }()
+    
+    
+    
+    
     fileprivate lazy var feedbackLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 18)
+        label.font = UIFont(name: Font.YantramanavMedium.rawValue, size: 15)
         label.text = "Send Feedback"
         label.textColor = .label
         
@@ -113,7 +147,7 @@ class SettingsViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 12)
         label.text = "Version 2.0"
-        label.textColor = .label
+        label.textColor = .systemGray
         
         return label
         
@@ -140,7 +174,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.addSubview(blurredView)
         
         view.addSubview(settingsView)
@@ -153,28 +187,42 @@ class SettingsViewController: UIViewController {
             settingsView.heightAnchor.constraint(equalToConstant: 350),
             settingsView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
             
-            closeButton.topAnchor.constraint(equalTo: settingsView.topAnchor, constant: 10),
-            closeButton.trailingAnchor.constraint(equalTo: settingsView.trailingAnchor, constant: -10),
+            closeButton.topAnchor.constraint(equalTo: settingsView.topAnchor, constant: 15),
+            closeButton.trailingAnchor.constraint(equalTo: settingsView.trailingAnchor, constant: -15),
             closeButton.heightAnchor.constraint(equalToConstant: 15),
             closeButton.widthAnchor.constraint(equalToConstant: 15)
             
         ])
         
         
+        let dateConverterLabelAndSwitcherStack = UIStackView(arrangedSubviews: [dateConverterLabel, dualCalendarSwitcher])
+        dateConverterLabelAndSwitcherStack.axis = .horizontal
+        dateConverterLabelAndSwitcherStack.distribution = .fill
+        dateConverterLabelAndSwitcherStack.alignment = .trailing
+        
+        
+        
         
         let stackView = UIStackView(arrangedSubviews: [
-            showMonthViewLabel,
-            showTodayViewLabel,
+            //showMonthViewLabel,
+            //showTodayViewLabel,
             dateConverterLabel,
-            separatorView,
-            dualCalendarLabel,
-            detailLabel, feedbackLabel,
+            //separatorView,
+            dateConverterLabelAndSwitcherStack,
+            detailLabel,
+            showHolidayOnlyLabel,
+            holidayDetailLabel,
+            feedbackLabel,
             versionLabel
         ])
         
         stackView.axis = .vertical
         stackView.alignment = .leading
+        //stackView.distribution = .fillProportionally
+        
         stackView.distribution = .fillProportionally
+        
+        
         
         stackView.setCustomSpacing(2, after: feedbackLabel)
         
@@ -185,7 +233,7 @@ class SettingsViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: closeButton.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: settingsView.leadingAnchor, constant: 20),
+            stackView.leadingAnchor.constraint(equalTo: settingsView.leadingAnchor, constant: 30),
             stackView.trailingAnchor.constraint(equalTo: settingsView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: settingsView.bottomAnchor, constant: -30)
             
