@@ -72,7 +72,7 @@ class SettingsViewController: UIViewController {
     fileprivate lazy var dualCalendarLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Font.YantramanavMedium.rawValue, size: 15)
-        label.text = "Dual Converter View"
+        label.text = "Dual Calendar View"
         label.textColor = .label
         
         return label
@@ -87,7 +87,7 @@ class SettingsViewController: UIViewController {
         return button
     }()
     
-    fileprivate lazy var detailLabel: UILabel = {
+    fileprivate lazy var calendarOptionsDetailLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 12)
         label.numberOfLines = 2
@@ -109,7 +109,7 @@ class SettingsViewController: UIViewController {
         
     }()
     
-    fileprivate lazy var holidayDetailLabel: UILabel = {
+    fileprivate lazy var holidayOptionsDetailLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 12)
         label.numberOfLines = 2
@@ -159,7 +159,7 @@ class SettingsViewController: UIViewController {
         return blurView
     }()
     
-    //MARK:- Reference For Future Works for Closure Based Implementations instead for Protocols
+    //MARK:- Reference For Future Works for Closure Based Implementations instead of Protocols
     
     // May be closure also could the same thing of removing blurred view from
     // super view. But I thought that blurring itself is the responsibility of
@@ -183,7 +183,7 @@ class SettingsViewController: UIViewController {
         NSLayoutConstraint.activate([
             settingsView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             settingsView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            settingsView.heightAnchor.constraint(equalToConstant: 350),
+            settingsView.heightAnchor.constraint(equalToConstant: 450),
             settingsView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
             
             closeButton.topAnchor.constraint(equalTo: settingsView.topAnchor, constant: 15),
@@ -194,10 +194,21 @@ class SettingsViewController: UIViewController {
         ])
         
         
-        let dateConverterLabelAndSwitcherStack = UIStackView(arrangedSubviews: [dateConverterLabel,  dualCalendarSwitcher])
-        dateConverterLabelAndSwitcherStack.axis = .horizontal
-        dateConverterLabelAndSwitcherStack.distribution = .fill
-        dateConverterLabelAndSwitcherStack.alignment = .center
+        let dualCalendarLabelAndSwitcherStack = UIStackView(arrangedSubviews: [dualCalendarLabel,  dualCalendarSwitcher])
+        dualCalendarLabelAndSwitcherStack.axis = .horizontal
+        dualCalendarLabelAndSwitcherStack.distribution = .fill
+        dualCalendarLabelAndSwitcherStack.alignment = .center
+        
+        dualCalendarLabelAndSwitcherStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        let converterSwitcherAndOptionDetailStack = UIStackView(arrangedSubviews: [ dateConverterLabel, dualCalendarLabelAndSwitcherStack, calendarOptionsDetailLabel])
+        
+        converterSwitcherAndOptionDetailStack.axis = .vertical
+        converterSwitcherAndOptionDetailStack.alignment = .leading
+        converterSwitcherAndOptionDetailStack.distribution = .fillProportionally
+        converterSwitcherAndOptionDetailStack.setCustomSpacing(8, after: dateConverterLabel)
+        
+        converterSwitcherAndOptionDetailStack.translatesAutoresizingMaskIntoConstraints = false
         
         
         
@@ -206,47 +217,63 @@ class SettingsViewController: UIViewController {
         holidayLabelAndHolidaySwitcherStack.distribution = .fill
         holidayLabelAndHolidaySwitcherStack.alignment = .center
         
+        let holidayAndHolidayDetailStack = UIStackView(arrangedSubviews: [holidayLabelAndHolidaySwitcherStack, holidayOptionsDetailLabel])
+        holidayAndHolidayDetailStack.axis = .vertical
+        holidayAndHolidayDetailStack.distribution = .fillProportionally
+        holidayAndHolidayDetailStack.alignment = .leading
+        holidayAndHolidayDetailStack.spacing = 1
+        
+        
+        let feedBackAndVersionStack = UIStackView(arrangedSubviews: [feedbackLabel, versionLabel, UIView()])
+        feedBackAndVersionStack.axis = .vertical
+        feedBackAndVersionStack.distribution = .fill
+        feedBackAndVersionStack.alignment = .leading
+        
+        feedBackAndVersionStack.translatesAutoresizingMaskIntoConstraints = false
+        
         
         let stackView = UIStackView(arrangedSubviews: [
-            dateConverterLabelAndSwitcherStack,
-            detailLabel,
-            holidayLabelAndHolidaySwitcherStack,
-            holidayDetailLabel,
-            feedbackLabel,
-            versionLabel
+            converterSwitcherAndOptionDetailStack,
+            holidayAndHolidayDetailStack,
+            feedBackAndVersionStack
         ])
         
         stackView.axis = .vertical
         stackView.alignment = .leading
         
-        stackView.distribution = .fill
-        stackView.spacing = 8
-        
-        //stackView.setCustomSpacing(0, after: dateConverterLabelAndSwitcherStack)
-        
-        stackView.setCustomSpacing(100, after: detailLabel)
-        
-        stackView.setCustomSpacing(0, after: feedbackLabel)
-        
-        stackView.setCustomSpacing(20, after: holidayLabelAndHolidaySwitcherStack)
+        stackView.distribution = .equalSpacing
         
         
         settingsView.addSubview(stackView)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
+        
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: closeButton.bottomAnchor),
+            stackView.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 10),
             stackView.leadingAnchor.constraint(equalTo: settingsView.leadingAnchor, constant: 30),
             stackView.trailingAnchor.constraint(equalTo: settingsView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: settingsView.bottomAnchor, constant: -30),
+            stackView.bottomAnchor.constraint(equalTo: settingsView.bottomAnchor),
             
-            dateConverterLabelAndSwitcherStack.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            dateConverterLabelAndSwitcherStack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -10),
+
+            converterSwitcherAndOptionDetailStack.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            converterSwitcherAndOptionDetailStack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -10),
             
-            holidayLabelAndHolidaySwitcherStack.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            holidayLabelAndHolidaySwitcherStack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -10)
+            dualCalendarLabelAndSwitcherStack.leadingAnchor.constraint(equalTo: converterSwitcherAndOptionDetailStack.leadingAnchor),
+            dualCalendarLabelAndSwitcherStack.trailingAnchor.constraint(equalTo: converterSwitcherAndOptionDetailStack.trailingAnchor),
             
+            holidayAndHolidayDetailStack.topAnchor.constraint(equalTo: dualCalendarLabelAndSwitcherStack.bottomAnchor, constant: 70),
+            
+            
+            holidayAndHolidayDetailStack.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            holidayAndHolidayDetailStack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -10),
+            
+            holidayLabelAndHolidaySwitcherStack.leadingAnchor.constraint(equalTo: holidayAndHolidayDetailStack.leadingAnchor),
+            holidayLabelAndHolidaySwitcherStack.trailingAnchor.constraint(equalTo: holidayAndHolidayDetailStack.trailingAnchor),
+            
+            feedBackAndVersionStack.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            feedBackAndVersionStack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
+        
         ])
     }
     

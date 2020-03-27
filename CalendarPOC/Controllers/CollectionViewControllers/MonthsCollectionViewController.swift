@@ -68,7 +68,7 @@ class MonthsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "monthsCell", for: indexPath) as! MonthsCell
         
-        cell.backgroundColor = .red
+        //cell.backgroundColor = .red
         
         cell.monthNameLabel.text = monthName[indexPath.item]
         
