@@ -196,15 +196,15 @@ class SettingsViewController: UIViewController {
         
         let dateConverterLabelAndSwitcherStack = UIStackView(arrangedSubviews: [dateConverterLabel,  dualCalendarSwitcher])
         dateConverterLabelAndSwitcherStack.axis = .horizontal
-        dateConverterLabelAndSwitcherStack.distribution = .fillProportionally
+        dateConverterLabelAndSwitcherStack.distribution = .fill
         dateConverterLabelAndSwitcherStack.alignment = .center
-        dateConverterLabelAndSwitcherStack.spacing = 170
+        
+        
         
         let holidayLabelAndHolidaySwitcherStack = UIStackView(arrangedSubviews: [showHolidayOnlyLabel,  holidaySwitcher])
         holidayLabelAndHolidaySwitcherStack.axis = .horizontal
-        holidayLabelAndHolidaySwitcherStack.distribution = .fillProportionally
+        holidayLabelAndHolidaySwitcherStack.distribution = .fill
         holidayLabelAndHolidaySwitcherStack.alignment = .center
-        holidayLabelAndHolidaySwitcherStack.spacing = 135
         
         
         let stackView = UIStackView(arrangedSubviews: [
@@ -218,12 +218,17 @@ class SettingsViewController: UIViewController {
         
         stackView.axis = .vertical
         stackView.alignment = .leading
-        //stackView.distribution = .fillProportionally
         
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fill
+        stackView.spacing = 8
         
+        //stackView.setCustomSpacing(0, after: dateConverterLabelAndSwitcherStack)
         
-        stackView.setCustomSpacing(2, after: feedbackLabel)
+        stackView.setCustomSpacing(100, after: detailLabel)
+        
+        stackView.setCustomSpacing(0, after: feedbackLabel)
+        
+        stackView.setCustomSpacing(20, after: holidayLabelAndHolidaySwitcherStack)
         
         
         settingsView.addSubview(stackView)
@@ -234,7 +239,13 @@ class SettingsViewController: UIViewController {
             stackView.topAnchor.constraint(equalTo: closeButton.bottomAnchor),
             stackView.leadingAnchor.constraint(equalTo: settingsView.leadingAnchor, constant: 30),
             stackView.trailingAnchor.constraint(equalTo: settingsView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: settingsView.bottomAnchor, constant: -30)
+            stackView.bottomAnchor.constraint(equalTo: settingsView.bottomAnchor, constant: -30),
+            
+            dateConverterLabelAndSwitcherStack.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            dateConverterLabelAndSwitcherStack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -10),
+            
+            holidayLabelAndHolidaySwitcherStack.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            holidayLabelAndHolidaySwitcherStack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -10)
             
         ])
     }
