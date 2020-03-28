@@ -51,7 +51,8 @@ class MonthsCollectionViewController: UICollectionViewController {
         
         collectionView.register(MonthsCell.self, forCellWithReuseIdentifier: "monthsCell")
         
-        collectionView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+//        collectionView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+        collectionView.backgroundColor = .systemGray6
         
         collectionView.showsHorizontalScrollIndicator = false
         
@@ -68,7 +69,7 @@ class MonthsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "monthsCell", for: indexPath) as! MonthsCell
         
-        cell.backgroundColor = .red
+        //cell.backgroundColor = .red
         
         cell.monthNameLabel.text = monthName[indexPath.item]
         

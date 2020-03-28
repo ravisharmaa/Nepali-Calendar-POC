@@ -7,8 +7,8 @@ class TodayViewController: UIViewController {
     
     fileprivate lazy var containterView: UIView = {
         let containerView = UIView()
-       // containerView.backgroundColor = .systemGray4
-        containerView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+        containerView.backgroundColor = .systemGray6
+        //containerView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         return containerView
     }()

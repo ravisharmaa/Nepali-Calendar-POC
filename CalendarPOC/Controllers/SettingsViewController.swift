@@ -215,15 +215,16 @@ class SettingsViewController: UIViewController {
         holidayAndHolidayDetailStack.axis = .vertical
         holidayAndHolidayDetailStack.distribution = .fillProportionally
         holidayAndHolidayDetailStack.alignment = .leading
-        holidayAndHolidayDetailStack.spacing = 1
         
         
-        let feedBackAndVersionStack = UIStackView(arrangedSubviews: [feedbackLabel, versionLabel, UIView()])
+        let feedBackAndVersionStack = UIStackView(arrangedSubviews: [UIView(), feedbackLabel, versionLabel, UIView()])
         feedBackAndVersionStack.axis = .vertical
         feedBackAndVersionStack.distribution = .fill
         feedBackAndVersionStack.alignment = .leading
         
         feedBackAndVersionStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        feedBackAndVersionStack.setCustomSpacing(6, after: feedBackAndVersionStack.subviews[0])
         feedBackAndVersionStack.setCustomSpacing(4, after: feedbackLabel)
         
         
@@ -236,13 +237,15 @@ class SettingsViewController: UIViewController {
         stackView.axis = .vertical
         stackView.alignment = .leading
         
-        //stackView.distribution = .fillProportionally
         stackView.distribution = .equalSpacing
+        //stackView.distribution = .equalSpacing
         
         
         settingsView.addSubview(stackView)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        //stackView.setCustomSpacing(10, after: holidayAndHolidayDetailStack)
         
         
         NSLayoutConstraint.activate([
@@ -258,7 +261,7 @@ class SettingsViewController: UIViewController {
             dualCalendarLabelAndSwitcherStack.leadingAnchor.constraint(equalTo: converterSwitcherAndOptionDetailStack.leadingAnchor),
             dualCalendarLabelAndSwitcherStack.trailingAnchor.constraint(equalTo: converterSwitcherAndOptionDetailStack.trailingAnchor),
             
-            holidayAndHolidayDetailStack.topAnchor.constraint(equalTo: dualCalendarLabelAndSwitcherStack.bottomAnchor, constant: 50),
+            holidayAndHolidayDetailStack.topAnchor.constraint(equalTo: converterSwitcherAndOptionDetailStack.bottomAnchor, constant: 8),
             holidayAndHolidayDetailStack.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             holidayAndHolidayDetailStack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -20),
             
