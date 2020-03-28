@@ -25,20 +25,17 @@ class SettingsViewController: UIViewController {
         button.setImage(#imageLiteral(resourceName: "closeb"), for: .normal)
         button.imageView?.clipsToBounds = true
         button.imageView?.contentMode = .scaleAspectFit
-        //button.imageEdgeInsets = .init(top: 0, left: 20, bottom: 20, right: 0)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(closeSettingsView), for: .touchUpInside)
         return button
     }()
     
     fileprivate lazy var showMonthViewLabel: UILabel = {
-        let view = UIView()
-        
+       
         let label = UILabel()
         label.font = UIFont(name: Font.YantramanavMedium.rawValue, size: 15)
         label.text = "Show Month View"
         label.textColor = .label
-        view.addSubview(label)
         return label
     }()
     
@@ -89,7 +86,7 @@ class SettingsViewController: UIViewController {
     
     fileprivate lazy var calendarOptionsDetailLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 12)
+        label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 13)
         label.numberOfLines = 2
         label.text = "Show both, Bikram Sambat and Gregorian \r\nCalendar in the Calendar View."
         label.textColor = .systemGray
@@ -101,7 +98,6 @@ class SettingsViewController: UIViewController {
     fileprivate lazy var showHolidayOnlyLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Font.YantramanavMedium.rawValue, size: 15)
-        //label.numberOfLines = 2
         label.text = "Show Holidays Only"
         label.textColor = .label
         
@@ -111,7 +107,7 @@ class SettingsViewController: UIViewController {
     
     fileprivate lazy var holidayOptionsDetailLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 12)
+        label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 13)
         label.numberOfLines = 2
         label.text = "Turn this on to show only holidays in the list."
         label.textColor = .systemGray
@@ -124,12 +120,8 @@ class SettingsViewController: UIViewController {
     fileprivate lazy var holidaySwitcher: UISwitch =  {
         let button = UISwitch()
         button.isOn = false
-        //button.backgroundColor = .systemBlue
         return button
     }()
-    
-    
-    
     
     fileprivate lazy var feedbackLabel: UILabel = {
         let label = UILabel()
@@ -144,7 +136,7 @@ class SettingsViewController: UIViewController {
     
     fileprivate lazy var versionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 12)
+        label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 13)
         label.text = "Version 2.0"
         label.textColor = .systemGray
         
@@ -194,28 +186,30 @@ class SettingsViewController: UIViewController {
         ])
         
         
+        //MARK:- Calendar Labels, and Switch Stack
         let dualCalendarLabelAndSwitcherStack = UIStackView(arrangedSubviews: [dualCalendarLabel,  dualCalendarSwitcher])
         dualCalendarLabelAndSwitcherStack.axis = .horizontal
         dualCalendarLabelAndSwitcherStack.distribution = .fill
         dualCalendarLabelAndSwitcherStack.alignment = .center
-        
         dualCalendarLabelAndSwitcherStack.translatesAutoresizingMaskIntoConstraints = false
         
-        let converterSwitcherAndOptionDetailStack = UIStackView(arrangedSubviews: [ dateConverterLabel, dualCalendarLabelAndSwitcherStack, calendarOptionsDetailLabel])
+        //MARK:- Converter Labels, and Switch Stack
         
+        let converterSwitcherAndOptionDetailStack = UIStackView(arrangedSubviews: [ dateConverterLabel, dualCalendarLabelAndSwitcherStack, calendarOptionsDetailLabel])
         converterSwitcherAndOptionDetailStack.axis = .vertical
         converterSwitcherAndOptionDetailStack.alignment = .leading
         converterSwitcherAndOptionDetailStack.distribution = .fillProportionally
-        converterSwitcherAndOptionDetailStack.setCustomSpacing(8, after: dateConverterLabel)
-        
+        converterSwitcherAndOptionDetailStack.setCustomSpacing(6, after: dateConverterLabel)
         converterSwitcherAndOptionDetailStack.translatesAutoresizingMaskIntoConstraints = false
         
         
+        //MARK:- HolidayLabels and Switcher Stack
         
         let holidayLabelAndHolidaySwitcherStack = UIStackView(arrangedSubviews: [showHolidayOnlyLabel,  holidaySwitcher])
         holidayLabelAndHolidaySwitcherStack.axis = .horizontal
         holidayLabelAndHolidaySwitcherStack.distribution = .fill
         holidayLabelAndHolidaySwitcherStack.alignment = .center
+        
         
         let holidayAndHolidayDetailStack = UIStackView(arrangedSubviews: [holidayLabelAndHolidaySwitcherStack, holidayOptionsDetailLabel])
         holidayAndHolidayDetailStack.axis = .vertical
@@ -230,6 +224,7 @@ class SettingsViewController: UIViewController {
         feedBackAndVersionStack.alignment = .leading
         
         feedBackAndVersionStack.translatesAutoresizingMaskIntoConstraints = false
+        feedBackAndVersionStack.setCustomSpacing(4, after: feedbackLabel)
         
         
         let stackView = UIStackView(arrangedSubviews: [
@@ -241,6 +236,7 @@ class SettingsViewController: UIViewController {
         stackView.axis = .vertical
         stackView.alignment = .leading
         
+        //stackView.distribution = .fillProportionally
         stackView.distribution = .equalSpacing
         
         
@@ -257,16 +253,14 @@ class SettingsViewController: UIViewController {
             
 
             converterSwitcherAndOptionDetailStack.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            converterSwitcherAndOptionDetailStack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -10),
+            converterSwitcherAndOptionDetailStack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -20),
             
             dualCalendarLabelAndSwitcherStack.leadingAnchor.constraint(equalTo: converterSwitcherAndOptionDetailStack.leadingAnchor),
             dualCalendarLabelAndSwitcherStack.trailingAnchor.constraint(equalTo: converterSwitcherAndOptionDetailStack.trailingAnchor),
             
-            holidayAndHolidayDetailStack.topAnchor.constraint(equalTo: dualCalendarLabelAndSwitcherStack.bottomAnchor, constant: 70),
-            
-            
+            holidayAndHolidayDetailStack.topAnchor.constraint(equalTo: dualCalendarLabelAndSwitcherStack.bottomAnchor, constant: 50),
             holidayAndHolidayDetailStack.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            holidayAndHolidayDetailStack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -10),
+            holidayAndHolidayDetailStack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -20),
             
             holidayLabelAndHolidaySwitcherStack.leadingAnchor.constraint(equalTo: holidayAndHolidayDetailStack.leadingAnchor),
             holidayLabelAndHolidaySwitcherStack.trailingAnchor.constraint(equalTo: holidayAndHolidayDetailStack.trailingAnchor),

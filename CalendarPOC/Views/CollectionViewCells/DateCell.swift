@@ -14,7 +14,7 @@ class DateCell: UICollectionViewCell {
     
     lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: Font.YantramanavMedium.rawValue, size: 17)
         return label
@@ -58,8 +58,9 @@ class DateCell: UICollectionViewCell {
     
     func populate(date: Int) {
         
-        containerView.backgroundColor = (date == 1) ? #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1) : .white
-        dateLabel.textColor = (date == 1 ) ? .white : .black
+        containerView.backgroundColor = (date == 1) ? .systemGray : .systemBackground
+        
+        dateLabel.textColor = (date == 1 ) ? .tertiarySystemBackground : .label
         
         self.date = date
     }

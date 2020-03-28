@@ -1,13 +1,14 @@
 //
-//  MonthViewController.swift
+//  ExperimentalHeaderController.swift
 //  CalendarPOC
 //
-//  Created by Ravi Bastola on 3/14/20.
+//  Created by Ravi Bastola on 3/27/20.
 //  Copyright © 2020 Ravi Bastola. All rights reserved.
 //
+
 import UIKit
 
-class MonthViewController: UIViewController {
+class ExperimentalHeaderController: UIViewController {
     
     fileprivate lazy var monthCollectionView: UICollectionViewController = {
         let collection = MonthsCollectionViewController()
@@ -40,6 +41,19 @@ class MonthViewController: UIViewController {
         return label
     }()
     
+    fileprivate lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        collectionView.backgroundColor = .systemBackground
+        
+        return collectionView
+    }()
+    
     //MARK:- LifeCycle
     
     override func viewDidLoad() {
@@ -64,17 +78,11 @@ class MonthViewController: UIViewController {
         monthCollectionView.didMove(toParent: self)
         monthCollectionView.view.translatesAutoresizingMaskIntoConstraints = false
         
-        
         monthCollectionView.view.heightAnchor.constraint(equalToConstant: 186).isActive = true
         
-        addChild(calendarEventsCollectionView)
-        calendarEventsCollectionView.didMove(toParent: self)
-        
-        
-        calendarEventsCollectionView.didMove(toParent: self)
         
         let stackView: UIStackView = UIStackView(arrangedSubviews: [
-            monthCollectionView.view, calendarEventsCollectionView.view
+            monthCollectionView.view, collectionView
         ])
         
         stackView.axis = .vertical
@@ -90,6 +98,11 @@ class MonthViewController: UIViewController {
             stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             
         ])
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        collectionView.register(TestCell.self, forCellWithReuseIdentifier: "reuseMe")
     }
     
     func layoutSettingsButton()  {
@@ -128,6 +141,62 @@ class MonthViewController: UIViewController {
         present(viewController, animated: true, completion: nil)
     }
     
+}
+
+extension ExperimentalHeaderController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"reuseMe", for: indexPath) as? TestCell
+        
+        addChild(cell!.calendarController)
+        cell?.calendarController.didMove(toParent: self)
+        
+        return cell!
+    }
     
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    
+}
+
+extension ExperimentalHeaderController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+}
+
+class TestCell: UICollectionViewCell {
+    
+    lazy var calendarController: UICollectionViewController = {
+        let c = CalendarEventsCollectionViewController()
+        return c
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        addSubview(calendarController.view)
+        
+        calendarController.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            calendarController.view.topAnchor.constraint(equalTo: topAnchor),
+            calendarController.view.leadingAnchor.constraint(equalTo: leadingAnchor),
+            calendarController.view.trailingAnchor.constraint(equalTo: trailingAnchor),
+            calendarController.view.bottomAnchor.constraint(equalTo: bottomAnchor)
+            
+        ])
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
 }

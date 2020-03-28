@@ -20,26 +20,26 @@ class MonthsCollectionViewController: UICollectionViewController {
         
         //usage of compositional layout
         
-        //let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(75), heightDimension: .absolute(100))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(45), heightDimension: .absolute(75))
         
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(100))
+        //let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(100))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        item.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 10)
-        // item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: .fixed(10), trailing: .fixed(10), bottom: .none)
+        //item.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 10)
+        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: .flexible(30), trailing: nil, bottom: .none)
         
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
-        //group.interItemSpacing = .some(.fixed(5))
+        group.interItemSpacing = .some(.fixed(5))
         
         
         let section = NSCollectionLayoutSection(group: group)
         
-        section.contentInsets = NSDirectionalEdgeInsets(top: 40, leading: 20, bottom: 0, trailing: 0)
-        //section.interGroupSpacing = 10
+        section.contentInsets = NSDirectionalEdgeInsets(top: 40, leading: 20, bottom: 40, trailing: 10)
+        section.interGroupSpacing = 5
         
         
         section.orthogonalScrollingBehavior = .continuous
@@ -68,7 +68,7 @@ class MonthsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "monthsCell", for: indexPath) as! MonthsCell
         
-        //cell.backgroundColor = .red
+        cell.backgroundColor = .red
         
         cell.monthNameLabel.text = monthName[indexPath.item]
         
