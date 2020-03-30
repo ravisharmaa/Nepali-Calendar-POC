@@ -62,7 +62,7 @@ class TodayViewController: UIViewController {
         return label
     }()
         
-    fileprivate lazy var calendarEventsCollectionView: UICollectionViewController = {
+    fileprivate lazy var calendarEventsCollectionView: CalendarEventsCollectionViewController = {
         let collection = CalendarEventsCollectionViewController()
         collection.view.translatesAutoresizingMaskIntoConstraints = false
         

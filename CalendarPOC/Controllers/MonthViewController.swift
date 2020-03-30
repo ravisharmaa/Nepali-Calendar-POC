@@ -87,8 +87,7 @@ class MonthViewController: UIViewController {
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             stackView.topAnchor.constraint(equalTo: view.topAnchor),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
     
@@ -111,7 +110,7 @@ class MonthViewController: UIViewController {
         gregorianMonthName.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            gregorianMonthName.leadingAnchor.constraint(equalTo: monthCollectionView.view.safeAreaLayoutGuide.leadingAnchor, constant: 36),
+            gregorianMonthName.leadingAnchor.constraint(equalTo: monthCollectionView.view.safeAreaLayoutGuide.leadingAnchor, constant: 46),
             gregorianMonthName.bottomAnchor.constraint(equalTo: monthCollectionView.view.bottomAnchor, constant: -20)
         ])
     }

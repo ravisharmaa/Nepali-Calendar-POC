@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExperimentalHeaderController: UIViewController {
+class MonthViewControllerExtended: UIViewController {
     
     fileprivate lazy var monthCollectionView: UICollectionViewController = {
         let collection = MonthsCollectionViewController()
@@ -143,7 +143,7 @@ class ExperimentalHeaderController: UIViewController {
     
 }
 
-extension ExperimentalHeaderController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension MonthViewControllerExtended: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"reuseMe", for: indexPath) as? TestCell
@@ -162,7 +162,7 @@ extension ExperimentalHeaderController: UICollectionViewDataSource, UICollection
     
 }
 
-extension ExperimentalHeaderController: UICollectionViewDelegateFlowLayout {
+extension MonthViewControllerExtended: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: collectionView.frame.width, height: collectionView.frame.height)
