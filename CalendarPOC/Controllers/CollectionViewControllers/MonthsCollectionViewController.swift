@@ -16,7 +16,7 @@ class MonthsCollectionViewController: UICollectionViewController {
         Month(name: "असार"),
         Month(name: "श्रावण"),
         Month(name: "भदौ"),
-        Month(name: "आश्विन"),
+        Month(name: "असार"),
         Month(name: "कार्तिक"),
         Month(name: "मंसिर"),
         Month(name: "पुष"),
@@ -43,26 +43,28 @@ class MonthsCollectionViewController: UICollectionViewController {
         
         //let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(1.0), heightDimension: .absolute(75))
         
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(100))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .absolute(100))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        item.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 10)
-//        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: .some(.fixed(1.0)), top: .flexible(40), trailing: .none, bottom: .none)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 0.7, bottom: 0, trailing: 0)
+        //        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: .some(.fixed(1.0)), top: .flexible(40), trailing: .none, bottom: .none)
         
         
         //        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         //
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 4)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        //let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 4)
         
         
         
         let section = NSCollectionLayoutSection(group: group)
         
-        section.contentInsets = NSDirectionalEdgeInsets(top: 50, leading: 35, bottom: 40, trailing: 100)
-        section.interGroupSpacing = 8
+        section.contentInsets = NSDirectionalEdgeInsets(top: 50, leading: 18, bottom: 40, trailing: 280)
+       // section.interGroupSpacing = 8
         
         
         section.orthogonalScrollingBehavior = .continuous
@@ -94,7 +96,6 @@ class MonthsCollectionViewController: UICollectionViewController {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "monthsCell", for: indexPath) as? MonthsCell else { fatalError() }
             
             cell.month = month
-            //cell.backgroundColor = .red
             return cell
         })
         
@@ -105,7 +106,6 @@ class MonthsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         collectionView.scrollToItem(at: IndexPath(item: indexPath.item, section: 0), at: .left, animated: true)
     }
 }
