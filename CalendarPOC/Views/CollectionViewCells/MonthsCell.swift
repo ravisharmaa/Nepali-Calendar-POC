@@ -16,6 +16,12 @@ class MonthsCell: UICollectionViewCell {
         }
     }
     
+    override var isSelected: Bool {
+        didSet(newValue) {
+            self.monthNameLabel.textColor = newValue ? .label : .systemGray3
+        }
+    }
+    
     lazy var monthNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 31)

@@ -105,7 +105,7 @@ class MonthsCollectionViewController: UICollectionViewController {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "monthsCell", for: indexPath) as? MonthsCell else { fatalError() }
             
             cell.month = month
-            cell.backgroundColor = .red
+            //cell.backgroundColor = .red
             return cell
         })
         
@@ -114,16 +114,4 @@ class MonthsCollectionViewController: UICollectionViewController {
         
         dataSource.apply(snapshot)
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        //        collectionView.scrollToItem(at: IndexPath(item: indexPath.item, section: 0), at: .left, animated: true)
-        //        let cellFrame = collectionView.layoutAttributesForItem(at: indexPath)?.frame
-        //        let positionX = cellFrame!.origin.x - 40.0 // your collection view content insets
-        //        let customPoint = CGPoint(x: positionX, y: 0)
-        //        collectionView.setContentOffset(customPoint, animated: true)
-        print("hello")
-    }
-    
-    
 }

@@ -25,6 +25,7 @@ class HorizontalMonthCollectionViewController: UICollectionViewController {
         Month(name: "चैत्र"),
     ]
     
+    var lastSelectedIndexPath:IndexPath?
     
     init() {
         let layout = UICollectionViewFlowLayout()
@@ -61,7 +62,8 @@ class HorizontalMonthCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? MonthsCell
         
         cell?.month = months[indexPath.item]
-        cell?.backgroundColor = .red
+       
+        cell?.isSelected = (lastSelectedIndexPath == indexPath)
         
         return cell!
     }
@@ -71,6 +73,20 @@ class HorizontalMonthCollectionViewController: UICollectionViewController {
         collectionView.scrollToItem(at: IndexPath(item: indexPath.item, section: 0), at: .left, animated: true)
         
         collectionView.contentInset = .init(top: 70, left: 45, bottom: 20, right: 330)
+        
+        guard lastSelectedIndexPath != indexPath else {
+            return
+        }
+        
+        if lastSelectedIndexPath != nil {
+            collectionView.deselectItem(at: lastSelectedIndexPath!, animated: false)
+        }
+        
+        let selectedCell = collectionView.cellForItem(at: indexPath) as! MonthsCell
+        
+        selectedCell.isSelected = true
+        
+        lastSelectedIndexPath = indexPath
     }
 }
 
