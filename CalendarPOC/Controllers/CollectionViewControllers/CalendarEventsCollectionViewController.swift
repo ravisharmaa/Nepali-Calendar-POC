@@ -80,10 +80,3 @@ extension CalendarEventsCollectionViewController: UICollectionViewDelegateFlowLa
         return 10.0
     }
 }
-
-extension CalendarEventsCollectionViewController {
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-    }
-}
