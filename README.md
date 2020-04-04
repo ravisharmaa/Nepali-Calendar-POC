@@ -10,10 +10,11 @@ which can provide the deisred information without and hassle.
 
 
 ## Screen Shots
-     ![Today Screen](TodayScreen.png)
-     ![Month Screen](MonthScreen.png)
-     ![Today Screen Black](TodayScreenBlack.png)
-     ![Month Screen Black](MonthScreenBlack.png)
+
+![Today Screen](TodayScreen.png)
+![Month Screen](MonthScreen.png)
+![Today Screen Black](TodayScreenBlack.png)
+![Month Screen Black](MonthScreenBlack.png)
 
 ## Developers
     - Ravi Bastola (bastola.ravi@hotmail.com)
