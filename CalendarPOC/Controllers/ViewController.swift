@@ -7,6 +7,7 @@ class ViewController: UIViewController  {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.isPagingEnabled = true
+        scrollView.bounces = false
         return scrollView
     }()
     
@@ -66,7 +67,7 @@ class ViewController: UIViewController  {
         ])
         
         //removes bounces from scroll view
-        scrollView.bounces = false
+        
     }
     
     

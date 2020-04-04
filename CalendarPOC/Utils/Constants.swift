@@ -25,7 +25,7 @@ enum ReuseIdentifiers: String {
 }
 
 enum Font: String {
-    case YantraManavLight = "Yantramanav"
+    case YantraManavLight = "Yantramanav-Light"
     case YantramanavBlack = "Yantramanav-Black"
     case YantramanavMedium = "Yantramanav-Medium"
     case YantramanavRegular = "Yantramanav-Regular"

@@ -1,16 +1,17 @@
 //
-//  MonthViewController.swift
+//  ExperimentalHeaderController.swift
 //  CalendarPOC
 //
-//  Created by Ravi Bastola on 3/14/20.
+//  Created by Ravi Bastola on 3/27/20.
 //  Copyright © 2020 Ravi Bastola. All rights reserved.
 //
+
 import UIKit
 
-class MonthViewController: UIViewController {
+class MonthViewControllerExtended: UIViewController {
     
     fileprivate lazy var monthCollectionView: UICollectionViewController = {
-        let collection = HorizontalMonthCollectionViewController()
+        let collection = MonthsCollectionViewController()
         collection.view.translatesAutoresizingMaskIntoConstraints = false
         
         return collection
@@ -40,6 +41,19 @@ class MonthViewController: UIViewController {
         return label
     }()
     
+    fileprivate lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        collectionView.backgroundColor = .systemBackground
+        
+        return collectionView
+    }()
+    
     //MARK:- LifeCycle
     
     override func viewDidLoad() {
@@ -59,44 +73,19 @@ class MonthViewController: UIViewController {
     //MARK:- UI
     func layoutMonthsCollectionView() {
         
-        let container = UIView()
-        container.addSubview(monthCollectionView.view)
-        
-        
-        container.translatesAutoresizingMaskIntoConstraints = false
-        
-        container.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-        
-        container.heightAnchor.constraint(equalToConstant: 186).isActive = true
-        
         addChild(monthCollectionView)
         
         monthCollectionView.didMove(toParent: self)
-        //monthCollectionView.view.translatesAutoresizingMaskIntoConstraints = false
+        monthCollectionView.view.translatesAutoresizingMaskIntoConstraints = false
         
+        monthCollectionView.view.heightAnchor.constraint(equalToConstant: 186).isActive = true
         
-        //monthCollectionView.view.heightAnchor.constraint(equalToConstant: 186).isActive = true
-        
-        monthCollectionView.view.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
-        monthCollectionView.view.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
-        monthCollectionView.view.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
-        monthCollectionView.view.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
-        
-        addChild(calendarEventsCollectionView)
-        calendarEventsCollectionView.didMove(toParent: self)
-        
-        
-        calendarEventsCollectionView.didMove(toParent: self)
         
         let stackView: UIStackView = UIStackView(arrangedSubviews: [
-            container, calendarEventsCollectionView.view
+            monthCollectionView.view, collectionView
         ])
         
         stackView.axis = .vertical
-        
-        //stackView.alignment = .center
-        
-        stackView.distribution = .fill
         
         view.addSubview(stackView)
         
@@ -106,8 +95,14 @@ class MonthViewController: UIViewController {
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             stackView.topAnchor.constraint(equalTo: view.topAnchor),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            
         ])
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        collectionView.register(TestCell.self, forCellWithReuseIdentifier: "reuseMe")
     }
     
     func layoutSettingsButton()  {
@@ -129,7 +124,7 @@ class MonthViewController: UIViewController {
         gregorianMonthName.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            gregorianMonthName.leadingAnchor.constraint(equalTo: monthCollectionView.view.safeAreaLayoutGuide.leadingAnchor, constant: 46),
+            gregorianMonthName.leadingAnchor.constraint(equalTo: monthCollectionView.view.safeAreaLayoutGuide.leadingAnchor, constant: 36),
             gregorianMonthName.bottomAnchor.constraint(equalTo: monthCollectionView.view.bottomAnchor, constant: -20)
         ])
     }
@@ -146,6 +141,62 @@ class MonthViewController: UIViewController {
         present(viewController, animated: true, completion: nil)
     }
     
+}
+
+extension MonthViewControllerExtended: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"reuseMe", for: indexPath) as? TestCell
+        
+        addChild(cell!.calendarController)
+        cell?.calendarController.didMove(toParent: self)
+        
+        return cell!
+    }
     
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    
+}
+
+extension MonthViewControllerExtended: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+}
+
+class TestCell: UICollectionViewCell {
+    
+    lazy var calendarController: UICollectionViewController = {
+        let c = CalendarEventsCollectionViewController()
+        return c
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        addSubview(calendarController.view)
+        
+        calendarController.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            calendarController.view.topAnchor.constraint(equalTo: topAnchor),
+            calendarController.view.leadingAnchor.constraint(equalTo: leadingAnchor),
+            calendarController.view.trailingAnchor.constraint(equalTo: trailingAnchor),
+            calendarController.view.bottomAnchor.constraint(equalTo: bottomAnchor)
+            
+        ])
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
 }

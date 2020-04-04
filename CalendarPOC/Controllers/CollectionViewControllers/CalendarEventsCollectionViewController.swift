@@ -61,7 +61,7 @@ extension CalendarEventsCollectionViewController: UICollectionViewDelegateFlowLa
         
         let width = (availableWidth - sectionInsetsLeftAndRight)
         
-        return .init(width: width, height: 50)
+        return .init(width: width, height: 60)
         
     }
     
