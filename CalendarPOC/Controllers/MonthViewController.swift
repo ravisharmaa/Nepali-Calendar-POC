@@ -10,7 +10,7 @@ import UIKit
 class MonthViewController: UIViewController {
     
     fileprivate lazy var monthCollectionView: UICollectionViewController = {
-        let collection = MonthsCollectionViewController()
+        let collection = HorizontalMonthCollectionViewController()
         collection.view.translatesAutoresizingMaskIntoConstraints = false
         
         return collection
@@ -59,13 +59,28 @@ class MonthViewController: UIViewController {
     //MARK:- UI
     func layoutMonthsCollectionView() {
         
+        let container = UIView()
+        container.addSubview(monthCollectionView.view)
+        
+        
+        container.translatesAutoresizingMaskIntoConstraints = false
+        
+        container.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        
+        container.heightAnchor.constraint(equalToConstant: 186).isActive = true
+        
         addChild(monthCollectionView)
         
         monthCollectionView.didMove(toParent: self)
-        monthCollectionView.view.translatesAutoresizingMaskIntoConstraints = false
+        //monthCollectionView.view.translatesAutoresizingMaskIntoConstraints = false
         
         
-        monthCollectionView.view.heightAnchor.constraint(equalToConstant: 186).isActive = true
+        //monthCollectionView.view.heightAnchor.constraint(equalToConstant: 186).isActive = true
+        
+        monthCollectionView.view.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
+        monthCollectionView.view.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
+        monthCollectionView.view.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
+        monthCollectionView.view.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
         
         addChild(calendarEventsCollectionView)
         calendarEventsCollectionView.didMove(toParent: self)
@@ -74,10 +89,14 @@ class MonthViewController: UIViewController {
         calendarEventsCollectionView.didMove(toParent: self)
         
         let stackView: UIStackView = UIStackView(arrangedSubviews: [
-            monthCollectionView.view, calendarEventsCollectionView.view
+            container, calendarEventsCollectionView.view
         ])
         
         stackView.axis = .vertical
+        
+        //stackView.alignment = .center
+        
+        stackView.distribution = .fill
         
         view.addSubview(stackView)
         

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22154D73241FF5E4001D20AD /* MonthsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22154D72241FF5E4001D20AD /* MonthsCell.swift */; };
+		221ABBAC2435E1A600E95CD2 /* HorizontalMonthCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221ABBAB2435E1A600E95CD2 /* HorizontalMonthCollectionViewController.swift */; };
 		22216B3C242E2B4F0054CDF1 /* MonthViewControllerExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22216B3B242E2B4F0054CDF1 /* MonthViewControllerExtended.swift */; };
 		22286549241B132900FA091A /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22286548241B132900FA091A /* DateCell.swift */; };
 		222952D4241CD47300E470EA /* MonthsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222952D3241CD47300E470EA /* MonthsCollectionViewController.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		22154D72241FF5E4001D20AD /* MonthsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsCell.swift; sourceTree = "<group>"; };
+		221ABBAB2435E1A600E95CD2 /* HorizontalMonthCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalMonthCollectionViewController.swift; sourceTree = "<group>"; };
 		22216B3B242E2B4F0054CDF1 /* MonthViewControllerExtended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewControllerExtended.swift; sourceTree = "<group>"; };
 		22286548241B132900FA091A /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		222952D3241CD47300E470EA /* MonthsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				223F21B9241CBC530078349B /* CalendarCollectionViewController.swift */,
 				223F21BB241CCEE50078349B /* EventsCollectionViewController.swift */,
 				222952D3241CD47300E470EA /* MonthsCollectionViewController.swift */,
+				221ABBAB2435E1A600E95CD2 /* HorizontalMonthCollectionViewController.swift */,
 			);
 			path = CollectionViewControllers;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				22DF6C77241AA55400967FFD /* TodayViewController.swift in Sources */,
 				2287A48B241E2D5B0003E736 /* CalendarEventsCollectionViewController.swift in Sources */,
 				22216B3C242E2B4F0054CDF1 /* MonthViewControllerExtended.swift in Sources */,
+				221ABBAC2435E1A600E95CD2 /* HorizontalMonthCollectionViewController.swift in Sources */,
 				22E7A1AF2424685200D23178 /* MonthLayout.swift in Sources */,
 				22154D73241FF5E4001D20AD /* MonthsCell.swift in Sources */,
 				22286549241B132900FA091A /* DateCell.swift in Sources */,

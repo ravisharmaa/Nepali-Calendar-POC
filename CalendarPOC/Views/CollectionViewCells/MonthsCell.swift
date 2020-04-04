@@ -29,8 +29,8 @@ class MonthsCell: UICollectionViewCell {
         addSubview(monthNameLabel)
         
         monthNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        monthNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        //monthNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        //monthNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        monthNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         monthNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 10).isActive = true
         //monthNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 30).isActive = true
         
