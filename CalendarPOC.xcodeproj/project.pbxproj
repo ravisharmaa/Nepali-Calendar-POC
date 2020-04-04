@@ -52,6 +52,7 @@
 		223F21BE241CD3900078349B /* MonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
 		2254CB8F241C72DF0017ED21 /* EventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
 		2257743E242C982500BEBA65 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		226382372438E126008F465C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2284D929241E91D8007AF1DD /* DaysListCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysListCollectionViewHeader.swift; sourceTree = "<group>"; };
 		2284D92C241E9B6B007AF1DD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2287A48A241E2D5B0003E736 /* CalendarEventsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +184,7 @@
 		22F892ED241A8D0D00AF0852 = {
 			isa = PBXGroup;
 			children = (
+				226382372438E126008F465C /* README.md */,
 				22F892F8241A8D0D00AF0852 /* CalendarPOC */,
 				22F892F7241A8D0D00AF0852 /* Products */,
 			);
