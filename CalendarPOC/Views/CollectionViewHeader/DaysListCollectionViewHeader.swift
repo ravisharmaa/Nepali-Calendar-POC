@@ -36,7 +36,7 @@ class DaysListCollectionViewHeader: UICollectionReusableView {
             default:
                 label.text = Days.SAT.rawValue
             }
-            label.textColor = .label
+            label.textColor = .systemGray
             label.textAlignment = .center
             stackView.addArrangedSubview(label)
         }

@@ -33,7 +33,7 @@ class TodayViewController: UIViewController {
     
     fileprivate lazy var devNagariMonthAndYearLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 39)
+        label.font = UIFont(name: Font.YantramanavBold.rawValue, size: 35)
         label.text = "फागुन २०७६"
         label.textColor = .label
         label.textAlignment = .left

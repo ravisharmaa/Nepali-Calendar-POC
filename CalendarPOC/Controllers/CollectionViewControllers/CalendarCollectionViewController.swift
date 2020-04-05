@@ -64,14 +64,14 @@ extension CalendarCollectionViewController: UICollectionViewDelegateFlowLayout {
         
         let sectionInsetsOfLeftAndRight: CGFloat = 30 + 10
         
-        let width = (availableWidth - sectionInsetsOfLeftAndRight - (4.0 * (7-1))) / 7
+        let width = (availableWidth - sectionInsetsOfLeftAndRight - (0.0 * (7-1))) / 7
         
         return .init(width: width, height: width)
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 4, left: 30, bottom: 30, right: 10)
+        return .init(top: 10, left: 30, bottom: 30, right: 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

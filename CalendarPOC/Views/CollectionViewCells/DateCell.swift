@@ -58,7 +58,7 @@ class DateCell: UICollectionViewCell {
     
     func populate(date: Int) {
         
-        containerView.backgroundColor = (date == 1) ? .systemGray : .systemBackground
+        containerView.backgroundColor = (date == 1) ? .systemGray2 : .systemBackground
         
         dateLabel.textColor = (date == 1 ) ? .tertiarySystemBackground : .label
         

@@ -13,12 +13,12 @@ import SwiftUI
 struct SettingsView: UIViewControllerRepresentable {
     
     
-     typealias UIViewControllerType = MonthViewController
+     typealias UIViewControllerType = ExperimentalTableViewController
     
-    func makeUIViewController(context: UIViewControllerRepresentableContext<SettingsView>) -> MonthViewController {
-        return MonthViewController()
+    func makeUIViewController(context: UIViewControllerRepresentableContext<SettingsView>) -> ExperimentalTableViewController {
+        return ExperimentalTableViewController()
     }
-    func updateUIViewController(_ uiViewController: MonthViewController, context: UIViewControllerRepresentableContext<SettingsView>) {
+    func updateUIViewController(_ uiViewController: ExperimentalTableViewController, context: UIViewControllerRepresentableContext<SettingsView>) {
     }
 }
 
