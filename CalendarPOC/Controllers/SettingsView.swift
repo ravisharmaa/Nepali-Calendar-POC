@@ -13,12 +13,12 @@ import SwiftUI
 struct SettingsView: UIViewControllerRepresentable {
     
     
-     typealias UIViewControllerType = ExperimentalTableViewController
+     typealias UIViewControllerType = LandingCollectionViewController
     
-    func makeUIViewController(context: UIViewControllerRepresentableContext<SettingsView>) -> ExperimentalTableViewController {
-        return ExperimentalTableViewController()
+    func makeUIViewController(context: UIViewControllerRepresentableContext<SettingsView>) -> LandingCollectionViewController {
+        return LandingCollectionViewController()
     }
-    func updateUIViewController(_ uiViewController: ExperimentalTableViewController, context: UIViewControllerRepresentableContext<SettingsView>) {
+    func updateUIViewController(_ uiViewController: LandingCollectionViewController, context: UIViewControllerRepresentableContext<SettingsView>) {
     }
 }
 

@@ -105,7 +105,6 @@ class MonthsCollectionViewController: UICollectionViewController {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "monthsCell", for: indexPath) as? MonthsCell else { fatalError() }
             
             cell.month = month
-            //cell.backgroundColor = .red
             return cell
         })
         

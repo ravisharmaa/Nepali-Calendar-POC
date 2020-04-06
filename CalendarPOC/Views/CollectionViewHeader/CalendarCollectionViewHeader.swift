@@ -23,9 +23,7 @@ class CalendarCollectionViewHeader: UICollectionReusableView {
         addSubview(calendarController.view)
         
         NSLayoutConstraint.activate([
-            //added to increase height from the top
             calendarController.view.topAnchor.constraint(equalTo: topAnchor, constant: 30),
-            //
             calendarController.view.leadingAnchor.constraint(equalTo: leadingAnchor),
             calendarController.view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             calendarController.view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40)
