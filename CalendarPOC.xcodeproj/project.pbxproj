@@ -39,6 +39,7 @@
 		22F892FE241A8D0D00AF0852 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F892FD241A8D0D00AF0852 /* ViewController.swift */; };
 		22F89303241A8D0F00AF0852 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F89302241A8D0F00AF0852 /* Assets.xcassets */; };
 		22F89306241A8D0F00AF0852 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22F89304241A8D0F00AF0852 /* LaunchScreen.storyboard */; };
+		22FCF1D9243B293D008E3CFF /* ExperimentalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCF1D8243B293D008E3CFF /* ExperimentalController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		22F89302241A8D0F00AF0852 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22F89305241A8D0F00AF0852 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22F89307241A8D0F00AF0852 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22FCF1D8243B293D008E3CFF /* ExperimentalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentalController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				2257743E242C982500BEBA65 /* SettingsView.swift */,
 				22216B3B242E2B4F0054CDF1 /* MonthViewControllerExtended.swift */,
 				22DE2EFC243AE1530086EEDE /* LandingCollectionViewController.swift */,
+				22FCF1D8243B293D008E3CFF /* ExperimentalController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				2284D92D241E9B6B007AF1DD /* Constants.swift in Sources */,
 				2254CB90241C72DF0017ED21 /* EventsCell.swift in Sources */,
 				222952D4241CD47300E470EA /* MonthsCollectionViewController.swift in Sources */,
+				22FCF1D9243B293D008E3CFF /* ExperimentalController.swift in Sources */,
 				223F21BC241CCEE50078349B /* EventsCollectionViewController.swift in Sources */,
 				2287A48E241E30F00003E736 /* CalendarCollectionViewHeader.swift in Sources */,
 				22D458EC2432375A00265370 /* Month.swift in Sources */,

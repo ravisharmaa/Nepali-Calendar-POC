@@ -10,6 +10,8 @@ import UIKit
 
 class CalendarEventsCollectionViewController: UICollectionViewController {
     
+    var didScrollScrollHandler: ((_ scrollView: UIScrollView)->())?
+    
     init() {
         let layout = EventLayout()
         
@@ -78,5 +80,12 @@ extension CalendarEventsCollectionViewController: UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
         return 10.0
+    }
+}
+
+extension CalendarEventsCollectionViewController {
+
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.didScrollScrollHandler?(scrollView)
     }
 }

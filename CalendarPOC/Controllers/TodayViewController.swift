@@ -61,7 +61,7 @@ class TodayViewController: UIViewController {
         label.textAlignment = .left
         return label
     }()
-        
+    
     fileprivate lazy var calendarEventsCollectionView: CalendarEventsCollectionViewController = {
         let collection = CalendarEventsCollectionViewController()
         collection.view.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +75,12 @@ class TodayViewController: UIViewController {
         button.setImage(#imageLiteral(resourceName: "menuw"), for: .normal)
         return button
     }()
+    
+    var containerHeightConstraint: NSLayoutConstraint!
+    var maxHeightConstraint: CGFloat = 320
+    var oldContentOffset: CGPoint = CGPoint.zero
+    
+    var stackViewBottomConstraint: NSLayoutConstraint!
     
     //MARK:- LifeCycle
     
@@ -93,31 +99,44 @@ class TodayViewController: UIViewController {
         
         view.addSubview(containterView)
         
+        containerHeightConstraint = containterView.heightAnchor.constraint(equalToConstant: maxHeightConstraint)
+        containerHeightConstraint?.isActive = true
+        
+        
+        let stackView = UIStackView(arrangedSubviews:[
+            devNagariDateLabel,
+            devNagariDayLabel,
+            devNagariMonthAndYearLabel,
+            devNagariPanchangaLabel,
+            monthDayYearLabel]
+        )
+        
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 5
+        
+        containterView.addSubview(stackView)
+        
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackViewBottomConstraint = stackView.bottomAnchor.constraint(equalTo: containterView.bottomAnchor)
+        stackViewBottomConstraint.constant = -32
+        stackViewBottomConstraint.isActive = true
         
         NSLayoutConstraint.activate([
+            
+            stackView.topAnchor.constraint(equalTo: containterView.topAnchor, constant: 78),
+            stackView.leadingAnchor.constraint(equalTo: containterView.leadingAnchor, constant: 40),
+            stackView.trailingAnchor.constraint(equalTo: containterView.trailingAnchor),
+            
+            
             containterView.topAnchor.constraint(equalTo: view.topAnchor),
             containterView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             containterView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
         
-        [devNagariDateLabel,
-         devNagariDayLabel,
-         devNagariMonthAndYearLabel,
-         devNagariPanchangaLabel,
-         monthDayYearLabel].forEach {
-            containterView.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.leadingAnchor.constraint(equalTo: containterView.leadingAnchor, constant: 40).isActive = true
-        }
         
-        NSLayoutConstraint.activate([
-            devNagariDateLabel.topAnchor.constraint(equalTo: containterView.topAnchor, constant: 78),
-            devNagariDayLabel.topAnchor.constraint(equalTo: devNagariDateLabel.bottomAnchor),
-            devNagariMonthAndYearLabel.topAnchor.constraint(equalTo: devNagariDayLabel.bottomAnchor),
-            devNagariPanchangaLabel.topAnchor.constraint(equalTo: devNagariMonthAndYearLabel.bottomAnchor, constant: 18),
-            monthDayYearLabel.topAnchor.constraint(equalTo: devNagariPanchangaLabel.bottomAnchor, constant: 3),
-            monthDayYearLabel.bottomAnchor.constraint(equalTo: containterView.bottomAnchor, constant: -32)
-        ])
         
     }
     
@@ -135,5 +154,29 @@ class TodayViewController: UIViewController {
             calendarEventsCollectionView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             calendarEventsCollectionView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        
+        calendarEventsCollectionView.didScrollScrollHandler = { [weak self] (scrollView) in
+            self?.animate(scrollView: scrollView)
+        }
+    }
+}
+
+extension TodayViewController {
+    
+    func animate(scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 0 {
+            containerHeightConstraint.isActive = false
+            stackViewBottomConstraint.isActive = false
+            self.containerHeightConstraint.constant -= scrollView.contentOffset.y
+        } else {
+            stackViewBottomConstraint.isActive = true
+            containerHeightConstraint.constant = maxHeightConstraint
+            containerHeightConstraint.isActive = true
+        }
+        
+        containterView.layoutIfNeeded()
+        
+        
+        
     }
 }

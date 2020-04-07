@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window?.windowScene = windoeScene
         
-        window?.rootViewController = LandingCollectionViewController()
+        window?.rootViewController = ViewController()
         
         window?.makeKeyAndVisible()
     }
