@@ -82,6 +82,8 @@ class TodayViewController: UIViewController {
     
     var stackViewBottomConstraint: NSLayoutConstraint!
     
+    var tapOnce: Bool = true
+    
     //MARK:- LifeCycle
     
     override func viewDidLoad() {
@@ -164,20 +166,24 @@ class TodayViewController: UIViewController {
 extension TodayViewController {
     
     func animate(scrollView: UIScrollView) {
-        if scrollView.contentOffset.y > 0 {
-            containerHeightConstraint.isActive = false
-            stackViewBottomConstraint.isActive = false
-//            UIView.animate(withDuration: 0.0, delay: 2, usingSpringWithDamping: 0.0, initialSpringVelocity: 0.2, options: [], animations: {
-              self.containerHeightConstraint.constant -= scrollView.contentOffset.y
-//            }, completion: nil)
-            
+        if scrollView.contentOffset.y > 0  {
+            if tapOnce {
+                containerHeightConstraint.isActive = false
+                stackViewBottomConstraint.isActive = false
+                self.containerHeightConstraint.constant -= scrollView.contentOffset.y
+                UIView.animate(withDuration: 0.5) {
+                    self.view.layoutIfNeeded()
+                }
+                tapOnce = false
+            }
         } else {
             stackViewBottomConstraint.isActive = true
             containerHeightConstraint.constant = maxHeightConstraint
+//            UIView.animate(withDuration: 0.5) {
+//                self.view.layoutIfNeeded()
+//            }
             containerHeightConstraint.isActive = true
+            tapOnce = true
         }
-        self.containterView.layoutIfNeeded()
-        
-
     }
 }
