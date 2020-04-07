@@ -77,8 +77,8 @@ class TodayViewController: UIViewController {
     }()
     
     var containerHeightConstraint: NSLayoutConstraint!
+    
     var maxHeightConstraint: CGFloat = 320
-    var oldContentOffset: CGPoint = CGPoint.zero
     
     var stackViewBottomConstraint: NSLayoutConstraint!
     
@@ -155,7 +155,7 @@ class TodayViewController: UIViewController {
             calendarEventsCollectionView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        calendarEventsCollectionView.didScrollScrollHandler = { [weak self] (scrollView) in
+        calendarEventsCollectionView.collectionViewDidScroll = { [weak self] (scrollView) in
             self?.animate(scrollView: scrollView)
         }
     }
@@ -167,16 +167,17 @@ extension TodayViewController {
         if scrollView.contentOffset.y > 0 {
             containerHeightConstraint.isActive = false
             stackViewBottomConstraint.isActive = false
-            self.containerHeightConstraint.constant -= scrollView.contentOffset.y
+//            UIView.animate(withDuration: 0.0, delay: 2, usingSpringWithDamping: 0.0, initialSpringVelocity: 0.2, options: [], animations: {
+              self.containerHeightConstraint.constant -= scrollView.contentOffset.y
+//            }, completion: nil)
+            
         } else {
             stackViewBottomConstraint.isActive = true
             containerHeightConstraint.constant = maxHeightConstraint
             containerHeightConstraint.isActive = true
         }
+        self.containterView.layoutIfNeeded()
         
-        containterView.layoutIfNeeded()
-        
-        
-        
+
     }
 }

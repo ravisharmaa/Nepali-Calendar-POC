@@ -10,7 +10,7 @@ import UIKit
 
 class CalendarEventsCollectionViewController: UICollectionViewController {
     
-    var didScrollScrollHandler: ((_ scrollView: UIScrollView)->())?
+    var collectionViewDidScroll: ((_ scrollView: UIScrollView)->())?
     
     init() {
         let layout = EventLayout()
@@ -86,6 +86,6 @@ extension CalendarEventsCollectionViewController: UICollectionViewDelegateFlowLa
 extension CalendarEventsCollectionViewController {
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.didScrollScrollHandler?(scrollView)
+        self.collectionViewDidScroll?(scrollView)
     }
 }
