@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Days: String {
+enum Days: String, CaseIterable {
     case S = "आ"
     case M = "सो"
     case T = "मं"
