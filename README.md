@@ -16,6 +16,9 @@ which can provide the deisred information without and hassle.
 ![Today Screen Black](TodayScreenBlack.png)
 ![Month Screen Black](MonthScreenBlack.png)
 
+## Senior App Developer / Mentor
+    - Sahi Krishna Joshi (s.joshi@gmail.com)
+
 ## Developers
     - Ravi Bastola (bastola.ravi@hotmail.com)
     

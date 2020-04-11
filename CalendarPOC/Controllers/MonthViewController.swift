@@ -24,9 +24,9 @@ class MonthViewController: UIViewController {
     }()
     
     lazy var settingsView: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(#imageLiteral(resourceName: "menuw"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "menuw").withRenderingMode(.alwaysOriginal), for: .normal)
         button.addTarget(self, action: #selector(showSettingsView), for: .touchUpInside)
         return button
     }()

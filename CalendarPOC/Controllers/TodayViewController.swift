@@ -179,9 +179,9 @@ extension TodayViewController {
         } else {
             stackViewBottomConstraint.isActive = true
             containerHeightConstraint.constant = maxHeightConstraint
-//            UIView.animate(withDuration: 0.5) {
-//                self.view.layoutIfNeeded()
-//            }
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
             containerHeightConstraint.isActive = true
             tapOnce = true
         }
