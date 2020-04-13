@@ -95,6 +95,18 @@ class TodayViewController: UIViewController {
         layoutConstraintsForCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        Reader.singleton.read(fromPath: "Sample", fileExtension: .json, responsible: Response.self) {[weak self] (result) in
+            switch result {
+            case .success(let response):
+                self?.calendarEventsCollectionView.events = response.events
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     //MARK:- UI Layouts
     
     func layoutConstraintsForContainerView() {

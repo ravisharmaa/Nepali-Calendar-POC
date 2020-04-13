@@ -34,10 +34,22 @@ class EventsCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont(name: Font.YantramanavRegular.rawValue, size: 14)
         label.text = "आज"
-        label.textColor = .systemGray
+       // label.textColor = .systemGray
         label.textAlignment = .left
         return label
     }()
+    
+    var events: Events? {
+        didSet {
+            self.eventLabel.text = events?.name
+            self.eventEffectiveDay.text = events?.daysToCome
+            self.eventDayLabel.text = events?.date
+            
+            self.eventDayLabel.textColor = events?.isMarkedHoliday ?? false ? .systemRed : .systemGray
+            self.eventEffectiveDay.textColor = events?.isMarkedHoliday ?? false ? .systemRed : .systemGray
+            self.eventLabel.textColor = events?.isMarkedHoliday ?? false ? .systemRed : .label
+        }
+    }
     
     
     

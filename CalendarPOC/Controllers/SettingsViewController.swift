@@ -21,8 +21,8 @@ class SettingsViewController: UIViewController {
     }()
     
     fileprivate lazy var closeButton: UIButton = {
-        let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "closeb"), for: .normal)
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "closeb").withRenderingMode(.alwaysOriginal), for: .normal)
         button.imageView?.clipsToBounds = true
         button.imageView?.contentMode = .scaleAspectFit
         button.translatesAutoresizingMaskIntoConstraints = false

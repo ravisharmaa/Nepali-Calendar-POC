@@ -11,6 +11,7 @@ import UIKit
 class CalendarEventsCollectionViewController: UICollectionViewController {
     
     var collectionViewDidScroll: ((_ scrollView: UIScrollView)->())?
+    var events: [Events]?
     
     init() {
         let layout = EventLayout()
@@ -42,11 +43,12 @@ class CalendarEventsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return events?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:ReuseIdentifiers.EventsCell.rawValue, for: indexPath) as! EventsCell
+        cell.events = self.events?[indexPath.item]
         return cell
     }
     

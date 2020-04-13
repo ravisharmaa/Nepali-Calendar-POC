@@ -32,6 +32,9 @@
 		22DE2EFF243AE6BA0086EEDE /* LandingCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE2EFE243AE6BA0086EEDE /* LandingCollectionViewHeader.swift */; };
 		22DE2F01243AE6FD0086EEDE /* LandingViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE2F00243AE6FD0086EEDE /* LandingViewControllerCell.swift */; };
 		22DF6C77241AA55400967FFD /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF6C76241AA55400967FFD /* TodayViewController.swift */; };
+		22ECDEAA2443F43500DCA1E3 /* Sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 22ECDEA92443F43500DCA1E3 /* Sample.json */; };
+		22ECDEAE2443FD2500DCA1E3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ECDEAD2443FD2500DCA1E3 /* Event.swift */; };
+		22ECDEB1244409C700DCA1E3 /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ECDEB0244409C700DCA1E3 /* Reader.swift */; };
 		22F737682423B3F30027205E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F737672423B3F30027205E /* SettingsViewController.swift */; };
 		22F892FA241A8D0D00AF0852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F892F9241A8D0D00AF0852 /* AppDelegate.swift */; };
 		22F892FC241A8D0D00AF0852 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F892FB241A8D0D00AF0852 /* SceneDelegate.swift */; };
@@ -67,6 +70,9 @@
 		22DE2EFE243AE6BA0086EEDE /* LandingCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingCollectionViewHeader.swift; sourceTree = "<group>"; };
 		22DE2F00243AE6FD0086EEDE /* LandingViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewControllerCell.swift; sourceTree = "<group>"; };
 		22DF6C76241AA55400967FFD /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		22ECDEA92443F43500DCA1E3 /* Sample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Sample.json; sourceTree = "<group>"; };
+		22ECDEAD2443FD2500DCA1E3 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		22ECDEB0244409C700DCA1E3 /* Reader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
 		22F737672423B3F30027205E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		22F892F6241A8D0D00AF0852 /* CalendarPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F892F9241A8D0D00AF0852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -177,8 +183,17 @@
 			isa = PBXGroup;
 			children = (
 				22D458EB2432375A00265370 /* Month.swift */,
+				22ECDEAD2443FD2500DCA1E3 /* Event.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		22ECDEAF244409B400DCA1E3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				22ECDEB0244409C700DCA1E3 /* Reader.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		22F892ED241A8D0D00AF0852 = {
@@ -201,6 +216,7 @@
 		22F892F8241A8D0D00AF0852 /* CalendarPOC */ = {
 			isa = PBXGroup;
 			children = (
+				22ECDEAF244409B400DCA1E3 /* Service */,
 				22D458EA2432373F00265370 /* Models */,
 				221709A3241FB71800CA889E /* Fonts */,
 				2284D92B241E9B44007AF1DD /* Utils */,
@@ -208,6 +224,7 @@
 				2228654D241B15B400FA091A /* Views */,
 				2228654C241B159D00FA091A /* Controllers */,
 				22F892F9241A8D0D00AF0852 /* AppDelegate.swift */,
+				22ECDEA92443F43500DCA1E3 /* Sample.json */,
 				22F892FB241A8D0D00AF0852 /* SceneDelegate.swift */,
 				22F89302241A8D0F00AF0852 /* Assets.xcassets */,
 				22F89304241A8D0F00AF0852 /* LaunchScreen.storyboard */,
@@ -276,6 +293,7 @@
 			files = (
 				22B225D1241FBBD2004AB45E /* Yantramanav-Light.ttf in Resources */,
 				22F89306241A8D0F00AF0852 /* LaunchScreen.storyboard in Resources */,
+				22ECDEAA2443F43500DCA1E3 /* Sample.json in Resources */,
 				22B225D5241FBBD2004AB45E /* Yantramanav-Thin.ttf in Resources */,
 				22F89303241A8D0F00AF0852 /* Assets.xcassets in Resources */,
 				22B225D4241FBBD2004AB45E /* Yantramanav-Bold.ttf in Resources */,
@@ -299,6 +317,7 @@
 				2287A48B241E2D5B0003E736 /* CalendarEventsCollectionViewController.swift in Sources */,
 				22216B3C242E2B4F0054CDF1 /* MonthViewControllerExtended.swift in Sources */,
 				221ABBAC2435E1A600E95CD2 /* HorizontalMonthCollectionViewController.swift in Sources */,
+				22ECDEB1244409C700DCA1E3 /* Reader.swift in Sources */,
 				22154D73241FF5E4001D20AD /* MonthsCell.swift in Sources */,
 				22286549241B132900FA091A /* DateCell.swift in Sources */,
 				2284D92D241E9B6B007AF1DD /* Constants.swift in Sources */,
@@ -308,6 +327,7 @@
 				2287A48E241E30F00003E736 /* CalendarCollectionViewHeader.swift in Sources */,
 				22D458EC2432375A00265370 /* Month.swift in Sources */,
 				22F892FE241A8D0D00AF0852 /* ViewController.swift in Sources */,
+				22ECDEAE2443FD2500DCA1E3 /* Event.swift in Sources */,
 				22DE2F01243AE6FD0086EEDE /* LandingViewControllerCell.swift in Sources */,
 				22F737682423B3F30027205E /* SettingsViewController.swift in Sources */,
 				2284D92A241E91D8007AF1DD /* DaysListCollectionViewHeader.swift in Sources */,
