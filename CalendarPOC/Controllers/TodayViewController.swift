@@ -62,9 +62,10 @@ class TodayViewController: UIViewController {
         return label
     }()
     
-    fileprivate lazy var calendarEventsCollectionView: CalendarEventsCollectionViewController = {
+    lazy var calendarEventsCollectionView: CalendarEventsCollectionViewController = {
         let collection = CalendarEventsCollectionViewController()
         collection.view.translatesAutoresizingMaskIntoConstraints = false
+        collection.collectionView.isUserInteractionEnabled = false
         
         return collection
     }()
@@ -74,6 +75,16 @@ class TodayViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(#imageLiteral(resourceName: "menuw"), for: .normal)
         return button
+    }()
+    
+    fileprivate lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.alwaysBounceVertical = true
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.backgroundColor = .red
+        
+        return scrollView
     }()
     
     var containerHeightConstraint: NSLayoutConstraint!
@@ -87,7 +98,7 @@ class TodayViewController: UIViewController {
     //MARK:- LifeCycle
     
     override func viewDidLoad() {
-        view.backgroundColor = .systemGray
+        view.backgroundColor = .systemBackground
         super.viewDidLoad()
         
         layoutConstraintsForContainerView()
@@ -95,63 +106,63 @@ class TodayViewController: UIViewController {
         layoutConstraintsForCollectionView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        Reader.singleton.read(fromPath: "Sample", fileExtension: .json, responsible: Response.self) {[weak self] (result) in
-            switch result {
-            case .success(let response):
-                self?.calendarEventsCollectionView.events = response.events
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
     //MARK:- UI Layouts
     
     func layoutConstraintsForContainerView() {
         
-        view.addSubview(containterView)
         
+//        view.addSubview(scrollView)
+//
+//        NSLayoutConstraint.activate([
+//            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+//            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+//        ])
+        
+        view.addSubview(containterView)
+
         containerHeightConstraint = containterView.heightAnchor.constraint(equalToConstant: maxHeightConstraint)
         containerHeightConstraint?.isActive = true
-        
-        
+
+
         let stackView = UIStackView(arrangedSubviews:[
             devNagariDateLabel,
+            UIView(),
             devNagariDayLabel,
             devNagariMonthAndYearLabel,
             devNagariPanchangaLabel,
             monthDayYearLabel]
         )
-        
+
         stackView.axis = .vertical
         stackView.alignment = .leading
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fillEqually
         stackView.spacing = 5
-        
+
         containterView.addSubview(stackView)
         
+        stackView.isLayoutMarginsRelativeArrangement = true
         
+        stackView.layoutMargins = .init(top: 56, left: 40, bottom: 40, right: 0)
+
+
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackViewBottomConstraint = stackView.bottomAnchor.constraint(equalTo: containterView.bottomAnchor)
-        stackViewBottomConstraint.constant = -32
-        stackViewBottomConstraint.isActive = true
-        
+
         NSLayoutConstraint.activate([
-            
-            stackView.topAnchor.constraint(equalTo: containterView.topAnchor, constant: 78),
-            stackView.leadingAnchor.constraint(equalTo: containterView.leadingAnchor, constant: 40),
+
+            stackView.topAnchor.constraint(equalTo: containterView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: containterView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: containterView.trailingAnchor),
-            
-            
+            stackView.bottomAnchor.constraint(equalTo: containterView.bottomAnchor),
+
+
             containterView.topAnchor.constraint(equalTo: view.topAnchor),
             containterView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             containterView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
-        
-        
+
+
         
     }
     
@@ -169,34 +180,5 @@ class TodayViewController: UIViewController {
             calendarEventsCollectionView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             calendarEventsCollectionView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
-        calendarEventsCollectionView.collectionViewDidScroll = { [weak self] (scrollView) in
-            self?.animate(scrollView: scrollView)
-        }
-    }
-}
-
-extension TodayViewController {
-    
-    func animate(scrollView: UIScrollView) {
-        if scrollView.contentOffset.y > 0  {
-            if tapOnce {
-                containerHeightConstraint.isActive = false
-                stackViewBottomConstraint.isActive = false
-                self.containerHeightConstraint.constant -= scrollView.contentOffset.y
-                UIView.animate(withDuration: 0.5) {
-                    self.view.layoutIfNeeded()
-                }
-                tapOnce = false
-            }
-        } else {
-            stackViewBottomConstraint.isActive = true
-            containerHeightConstraint.constant = maxHeightConstraint
-            UIView.animate(withDuration: 0.5) {
-                self.view.layoutIfNeeded()
-            }
-            containerHeightConstraint.isActive = true
-            tapOnce = true
-        }
     }
 }

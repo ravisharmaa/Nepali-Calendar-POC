@@ -16,7 +16,7 @@ class MonthViewController: UIViewController {
         return collection
     }()
     
-    fileprivate lazy var calendarEventsCollectionView: UICollectionViewController = {
+    lazy var calendarEventsCollectionView: CalendarEventsCollectionViewController = {
         let collection = CalendarEventsCollectionViewController()
         collection.view.translatesAutoresizingMaskIntoConstraints = false
         

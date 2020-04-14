@@ -11,14 +11,14 @@ class ViewController: UIViewController  {
         return scrollView
     }()
     
-    lazy var todayViewController: UIViewController = {
+    lazy var todayViewController: TodayViewController = {
         let vc = TodayViewController()
         vc.view.translatesAutoresizingMaskIntoConstraints = false
         
         return vc
     }()
     
-    lazy var monthViewController: UIViewController = {
+    lazy var monthViewController: MonthViewController = {
         let vc = MonthViewController()
         vc.view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -70,5 +70,18 @@ class ViewController: UIViewController  {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        Reader.singleton.read(fromPath: "Sample", fileExtension: .json, responsible: Response.self) {[weak self] (result) in
+            switch result {
+            case .success(let response):
+                self?.todayViewController.calendarEventsCollectionView.events = response.events
+                self?.monthViewController.calendarEventsCollectionView.events = response.events
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
     
 }
