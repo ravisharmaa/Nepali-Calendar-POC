@@ -73,7 +73,7 @@ class ViewController: UIViewController  {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        Reader.singleton.read(fromPath: "Sample", fileExtension: .json, responsible: Response.self) {[weak self] (result) in
+        Reader.singleton.read(from: "Sample", fileExtension: .json, responsible: Response.self) {[weak self] (result) in
             switch result {
             case .success(let response):
                 self?.todayViewController.calendarEventsCollectionView.events = response.events

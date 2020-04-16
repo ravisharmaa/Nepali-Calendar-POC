@@ -82,7 +82,7 @@ class TodayViewController: UIViewController {
         scrollView.alwaysBounceVertical = true
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .red
+        //scrollView.backgroundColor = .red
         
         return scrollView
     }()
@@ -110,27 +110,23 @@ class TodayViewController: UIViewController {
     
     func layoutConstraintsForContainerView() {
         
-        
-//        view.addSubview(scrollView)
-//
-//        NSLayoutConstraint.activate([
-//            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-//            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//        ])
-        
-        view.addSubview(containterView)
+        view.addSubview(scrollView)
 
-        containerHeightConstraint = containterView.heightAnchor.constraint(equalToConstant: maxHeightConstraint)
-        containerHeightConstraint?.isActive = true
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
 
+        scrollView.addSubview(containterView)
 
         let stackView = UIStackView(arrangedSubviews:[
             devNagariDateLabel,
             UIView(),
             devNagariDayLabel,
             devNagariMonthAndYearLabel,
+            UIView(),
             devNagariPanchangaLabel,
             monthDayYearLabel]
         )
@@ -138,17 +134,18 @@ class TodayViewController: UIViewController {
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .fillEqually
-        stackView.spacing = 5
+
+         stackView.setCustomSpacing(14, after: devNagariDateLabel)
+        stackView.setCustomSpacing(14, after: devNagariDayLabel)
 
         containterView.addSubview(stackView)
-        
+
         stackView.isLayoutMarginsRelativeArrangement = true
-        
+
         stackView.layoutMargins = .init(top: 56, left: 40, bottom: 40, right: 0)
 
-
         stackView.translatesAutoresizingMaskIntoConstraints = false
-
+//
         NSLayoutConstraint.activate([
 
             stackView.topAnchor.constraint(equalTo: containterView.topAnchor),
@@ -157,18 +154,21 @@ class TodayViewController: UIViewController {
             stackView.bottomAnchor.constraint(equalTo: containterView.bottomAnchor),
 
 
-            containterView.topAnchor.constraint(equalTo: view.topAnchor),
-            containterView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            containterView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            containterView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            containterView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            containterView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            containterView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            
+            containterView.heightAnchor.constraint(equalToConstant: 320)
         ])
+//
 
 
-        
     }
     
     func layoutConstraintsForCollectionView () {
         
-        view.addSubview(calendarEventsCollectionView.view)
+        scrollView.addSubview(calendarEventsCollectionView.view)
         
         addChild(calendarEventsCollectionView)
         
@@ -176,9 +176,13 @@ class TodayViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             calendarEventsCollectionView.view.topAnchor.constraint(equalTo: containterView.bottomAnchor),
-            calendarEventsCollectionView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            calendarEventsCollectionView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            calendarEventsCollectionView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            calendarEventsCollectionView.view.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            calendarEventsCollectionView.view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            calendarEventsCollectionView.view.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            
+            calendarEventsCollectionView.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            
+            calendarEventsCollectionView.view.heightAnchor.constraint(equalToConstant:view.frame.height * 1.5)
         ])
     }
 }

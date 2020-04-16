@@ -15,7 +15,7 @@ enum FileExtensions: String {
 
 protocol Readable {
     
-    func read<T: Codable>(fromPath: String, fileExtension: FileExtensions, responsible: T.Type, completion: @escaping((Result<T, Error>) -> ()))
+    func read<T: Codable>(from path: String, fileExtension: FileExtensions, responsible: T.Type, completion: @escaping((Result<T, Error>) -> ()))
 }
 
 struct Reader: Readable {
@@ -24,9 +24,9 @@ struct Reader: Readable {
     
     private init () {}
         
-    func read<T>(fromPath: String, fileExtension: FileExtensions, responsible: T.Type, completion: @escaping ((Result<T, Error>) -> ())) where T : Decodable, T : Encodable {
+    func read<T: Codable>(from path: String, fileExtension: FileExtensions, responsible: T.Type, completion: @escaping ((Result<T, Error>) -> ())) {
         
-        let file = Bundle.main.path(forResource: fromPath, ofType: fileExtension.rawValue)
+        let file = Bundle.main.path(forResource: path, ofType: fileExtension.rawValue)
         
         do {
             let file = try String(contentsOfFile: file!).data(using: .utf8)
