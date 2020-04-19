@@ -8,7 +8,7 @@ class TodayViewController: UIViewController {
     fileprivate lazy var containterView: UIView = {
         let containerView = UIView()
         containerView.backgroundColor = .systemGray6
-        //containerView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+//        containerView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         return containerView
     }()
@@ -66,7 +66,7 @@ class TodayViewController: UIViewController {
         let collection = CalendarEventsCollectionViewController()
         collection.view.translatesAutoresizingMaskIntoConstraints = false
         collection.collectionView.isUserInteractionEnabled = false
-        
+        collection.collectionView.contentInsetAdjustmentBehavior = .never
         return collection
     }()
     
@@ -83,17 +83,12 @@ class TodayViewController: UIViewController {
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         //scrollView.backgroundColor = .red
-        
+        //scrollView.delegate = self
+        scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
     
-    var containerHeightConstraint: NSLayoutConstraint!
-    
-    var maxHeightConstraint: CGFloat = 320
-    
-    var stackViewBottomConstraint: NSLayoutConstraint!
-    
-    var tapOnce: Bool = true
+    fileprivate var collectionViewHeightConstraint: NSLayoutConstraint?
     
     //MARK:- LifeCycle
     
@@ -136,7 +131,7 @@ class TodayViewController: UIViewController {
         stackView.distribution = .fillEqually
 
          stackView.setCustomSpacing(14, after: devNagariDateLabel)
-        stackView.setCustomSpacing(14, after: devNagariDayLabel)
+         stackView.setCustomSpacing(14, after: devNagariDayLabel)
 
         containterView.addSubview(stackView)
 
@@ -145,7 +140,7 @@ class TodayViewController: UIViewController {
         stackView.layoutMargins = .init(top: 56, left: 40, bottom: 40, right: 0)
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
-//
+        
         NSLayoutConstraint.activate([
 
             stackView.topAnchor.constraint(equalTo: containterView.topAnchor),
@@ -159,11 +154,8 @@ class TodayViewController: UIViewController {
             containterView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             containterView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            containterView.heightAnchor.constraint(equalToConstant: 320)
+            containterView.heightAnchor.constraint(equalToConstant: 300)
         ])
-//
-
-
     }
     
     func layoutConstraintsForCollectionView () {
@@ -174,6 +166,15 @@ class TodayViewController: UIViewController {
         
         calendarEventsCollectionView.didMove(toParent: self)
         
+        // headerHeight + Calendarheight + (cellCount * cellHeight)
+        // 350 + (60 * 10)
+        
+        //let height = view.frame.height + (350 + )
+        
+        collectionViewHeightConstraint = calendarEventsCollectionView.view.heightAnchor.constraint(equalToConstant: 350 + (60 * 20) + 38)
+//        collectionViewHeightConstraint = calendarEventsCollectionView.view.heightAnchor.constraint(equalToConstant: height)
+        collectionViewHeightConstraint?.isActive = true
+        
         NSLayoutConstraint.activate([
             calendarEventsCollectionView.view.topAnchor.constraint(equalTo: containterView.bottomAnchor),
             calendarEventsCollectionView.view.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
@@ -182,7 +183,7 @@ class TodayViewController: UIViewController {
             
             calendarEventsCollectionView.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            calendarEventsCollectionView.view.heightAnchor.constraint(equalToConstant:view.frame.height * 1.5)
+//            calendarEventsCollectionView.view.heightAnchor.constraint(equalToConstant:view.frame.height * 1.5)
         ])
     }
 }

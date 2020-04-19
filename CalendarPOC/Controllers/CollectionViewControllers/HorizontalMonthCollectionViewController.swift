@@ -93,11 +93,15 @@ class HorizontalMonthCollectionViewController: UICollectionViewController {
 extension HorizontalMonthCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         let availableHeigth = collectionView.frame.height
+        
         let insets: CGFloat = 70 + 20
+        
         let height = availableHeigth - insets
         
         let item = months[indexPath.row].name
+        
         let itemSize = item.size(withAttributes: [
             NSAttributedString.Key.font : UIFont(name: Font.YantramanavBold.rawValue, size: 31) ?? UIFont.boldSystemFont(ofSize: 31)
         ])

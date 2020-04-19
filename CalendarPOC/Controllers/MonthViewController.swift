@@ -19,6 +19,7 @@ class MonthViewController: UIViewController {
     lazy var calendarEventsCollectionView: CalendarEventsCollectionViewController = {
         let collection = CalendarEventsCollectionViewController()
         collection.view.translatesAutoresizingMaskIntoConstraints = false
+        collection.collectionView.contentInsetAdjustmentBehavior = .never
         
         return collection
     }()
@@ -145,6 +146,8 @@ class MonthViewController: UIViewController {
         viewController.modalPresentationStyle = .overCurrentContext
         present(viewController, animated: true, completion: nil)
     }
+    
+    
     
     
     

@@ -11,7 +11,8 @@
       "date": "Some Date",
       "is_marked_holiday": false,
       "days_to_come": "10 din pachi"
-    },
+    }
+    ,
     {
       "name": "Some Event",
       "date": "Some Date",
@@ -35,36 +36,6 @@
       "date": "Some Date",
       "is_marked_holiday": false,
       "days_to_come": "10 din pachi"
-    },
-    {
-      "name": "Some Event",
-      "date": "Some Date",
-      "is_marked_holiday": false,
-      "days_to_come": "10 din pachi"
-    },
-    {
-      "name": "Some Event",
-      "date": "Some Date",
-      "is_marked_holiday": false,
-      "days_to_come": "10 din pachi"
-    },
-    {
-      "name": "Some Event",
-      "date": "Some Date",
-      "is_marked_holiday": false,
-      "days_to_come": "10 din pachi"
-    },
-    {
-      "name": "Some Event",
-      "date": "Some Date",
-      "is_marked_holiday": false,
-      "days_to_come": "10 din pachi"
-    },
-    {
-      "name": "मेष सक्रान्ति",
-      "date": "०१ वैशाख",
-      "is_marked_holiday": true,
-      "days_to_come": "आज"
     },
     {
       "name": "Some Event",
@@ -120,5 +91,6 @@
       "is_marked_holiday": false,
       "days_to_come": "10 din pachi"
     }
+    
   ]
 }

@@ -13,7 +13,7 @@ import SwiftUI
 struct SettingsView: UIViewControllerRepresentable {
     
     
-     typealias UIViewControllerType = MonthViewController
+    typealias UIViewControllerType = MonthViewController
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<SettingsView>) -> MonthViewController {
         return MonthViewController()

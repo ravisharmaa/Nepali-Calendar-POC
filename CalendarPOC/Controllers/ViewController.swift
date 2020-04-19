@@ -76,6 +76,7 @@ class ViewController: UIViewController  {
         Reader.singleton.read(from: "Sample", fileExtension: .json, responsible: Response.self) {[weak self] (result) in
             switch result {
             case .success(let response):
+                self?.todayViewController.events = response.events
                 self?.todayViewController.calendarEventsCollectionView.events = response.events
                 self?.monthViewController.calendarEventsCollectionView.events = response.events
             case .failure(let error):
