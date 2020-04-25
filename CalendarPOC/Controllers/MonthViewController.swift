@@ -41,6 +41,11 @@ class MonthViewController: UIViewController {
         return label
     }()
     
+    fileprivate lazy var settingsController: UIViewController = {
+        let controller = SettingsViewController()
+        return controller
+    }()
+    
     //MARK:- LifeCycle
     
     override func viewDidLoad() {
@@ -136,15 +141,15 @@ class MonthViewController: UIViewController {
     }
     
     @objc func showSettingsView() {
-        let viewController = SettingsViewController()
+        
         
         //        viewController.didTapCloseButton = {
         //            blurEffectView.removeFromSuperview()
         //        }
-        viewController.modalTransitionStyle = .crossDissolve
+        settingsController.modalTransitionStyle = .crossDissolve
         
-        viewController.modalPresentationStyle = .overCurrentContext
-        present(viewController, animated: true, completion: nil)
+        settingsController.modalPresentationStyle = .overCurrentContext
+        present(settingsController, animated: true, completion: nil)
     }
     
     

@@ -70,30 +70,41 @@ class TodayViewController: UIViewController {
         return collection
     }()
     
-    lazy var settingsView: UIButton = {
+    
+    fileprivate lazy var settingsView: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(#imageLiteral(resourceName: "menuw").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(showSettingsView), for: .touchUpInside)
         return button
     }()
+    
     
     fileprivate lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.alwaysBounceVertical = true
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        //scrollView.backgroundColor = .red
-        //scrollView.delegate = self
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
+    
+    fileprivate lazy var settingsController: UIViewController = {
+        let controller = SettingsViewController()
+        
+        return controller
+    }()
+    
+    //MARK:- Instance Properties
     
     fileprivate var collectionViewHeightConstraint: NSLayoutConstraint?
     
     //MARK:- LifeCycle
     
     override func viewDidLoad() {
-        view.backgroundColor = .systemGray6
+        
+        view.backgroundColor = .systemBackground
+        
         super.viewDidLoad()
         
         layoutConstraintsForContainerView()
@@ -115,6 +126,8 @@ class TodayViewController: UIViewController {
         ])
         
         scrollView.addSubview(containterView)
+        
+        scrollView.addSubview(settingsView)
         
         let stackView = UIStackView(arrangedSubviews:[
             devNagariDateLabel,
@@ -148,6 +161,10 @@ class TodayViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: containterView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: containterView.bottomAnchor),
             
+            settingsView.heightAnchor.constraint(equalToConstant: 35),
+            settingsView.widthAnchor.constraint(equalToConstant: 35),
+            settingsView.topAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.topAnchor, constant: 8),
+            settingsView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
             
             containterView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             containterView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
@@ -182,9 +199,15 @@ class TodayViewController: UIViewController {
             calendarEventsCollectionView.view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             calendarEventsCollectionView.view.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             
-            calendarEventsCollectionView.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            
-            //            calendarEventsCollectionView.view.heightAnchor.constraint(equalToConstant:view.frame.height * 1.5)
+            calendarEventsCollectionView.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
+    }
+    
+    @objc func showSettingsView() {
+        
+        settingsController.modalTransitionStyle = .crossDissolve
+        
+        settingsController.modalPresentationStyle = .overCurrentContext
+        present(settingsController, animated: true, completion: nil)
     }
 }
