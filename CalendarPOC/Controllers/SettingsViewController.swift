@@ -76,9 +76,11 @@ class SettingsViewController: UIViewController {
         
     }()
     
-    fileprivate lazy var dualCalendarSwitcher: UISwitch =  {
-        let button = UISwitch()
-        button.isOn = false
+    fileprivate lazy var dualCalendarSwitcher: CalendarSwitch =  {
+        let button = CalendarSwitch()
+        button.onTintColor = .systemBlue
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isOn = true
         //button.backgroundColor = .systemBlue
         
         return button
@@ -117,9 +119,11 @@ class SettingsViewController: UIViewController {
     }()
     
     
-    fileprivate lazy var holidaySwitcher: UISwitch =  {
-        let button = UISwitch()
-        button.isOn = false
+    fileprivate lazy var holidaySwitcher: CalendarSwitch =  {
+        let button = CalendarSwitch()
+        button.onTintColor = .systemBlue
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isOn = true
         return button
     }()
     
@@ -181,13 +185,17 @@ class SettingsViewController: UIViewController {
             closeButton.topAnchor.constraint(equalTo: settingsView.topAnchor, constant: 15),
             closeButton.trailingAnchor.constraint(equalTo: settingsView.trailingAnchor, constant: -15),
             closeButton.heightAnchor.constraint(equalToConstant: 15),
-            closeButton.widthAnchor.constraint(equalToConstant: 15)
+            closeButton.widthAnchor.constraint(equalToConstant: 15),
+            
+            
+            dualCalendarSwitcher.heightAnchor.constraint(equalToConstant: 20),
+            holidaySwitcher.heightAnchor.constraint(equalToConstant: 20)
             
         ])
         
         
         //MARK:- Calendar Labels, and Switch Stack
-        let dualCalendarLabelAndSwitcherStack = UIStackView(arrangedSubviews: [dualCalendarLabel,  dualCalendarSwitcher])
+        let dualCalendarLabelAndSwitcherStack = UIStackView(arrangedSubviews: [dualCalendarLabel, UIView(), dualCalendarSwitcher])
         dualCalendarLabelAndSwitcherStack.axis = .horizontal
         dualCalendarLabelAndSwitcherStack.distribution = .fill
         dualCalendarLabelAndSwitcherStack.alignment = .center
@@ -205,7 +213,7 @@ class SettingsViewController: UIViewController {
         
         //MARK:- HolidayLabels and Switcher Stack
         
-        let holidayLabelAndHolidaySwitcherStack = UIStackView(arrangedSubviews: [showHolidayOnlyLabel,  holidaySwitcher])
+        let holidayLabelAndHolidaySwitcherStack = UIStackView(arrangedSubviews: [showHolidayOnlyLabel, UIView(),  holidaySwitcher])
         holidayLabelAndHolidaySwitcherStack.axis = .horizontal
         holidayLabelAndHolidaySwitcherStack.distribution = .fill
         holidayLabelAndHolidaySwitcherStack.alignment = .center

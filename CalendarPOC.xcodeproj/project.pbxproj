@@ -12,6 +12,7 @@
 		22216B3C242E2B4F0054CDF1 /* MonthViewControllerExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22216B3B242E2B4F0054CDF1 /* MonthViewControllerExtended.swift */; };
 		22286549241B132900FA091A /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22286548241B132900FA091A /* DateCell.swift */; };
 		222952D4241CD47300E470EA /* MonthsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222952D3241CD47300E470EA /* MonthsCollectionViewController.swift */; };
+		222B84BA24545E1500508FAA /* CalendarSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222B84B924545E1500508FAA /* CalendarSwitch.swift */; };
 		223F21BA241CBC530078349B /* CalendarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F21B9241CBC530078349B /* CalendarCollectionViewController.swift */; };
 		223F21BC241CCEE50078349B /* EventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F21BB241CCEE50078349B /* EventsCollectionViewController.swift */; };
 		223F21BF241CD3900078349B /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F21BE241CD3900078349B /* MonthViewController.swift */; };
@@ -49,6 +50,7 @@
 		22216B3B242E2B4F0054CDF1 /* MonthViewControllerExtended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewControllerExtended.swift; sourceTree = "<group>"; };
 		22286548241B132900FA091A /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		222952D3241CD47300E470EA /* MonthsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsCollectionViewController.swift; sourceTree = "<group>"; };
+		222B84B924545E1500508FAA /* CalendarSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSwitch.swift; sourceTree = "<group>"; };
 		223F21B9241CBC530078349B /* CalendarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewController.swift; sourceTree = "<group>"; };
 		223F21BB241CCEE50078349B /* EventsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewController.swift; sourceTree = "<group>"; };
 		223F21BE241CD3900078349B /* MonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				2290B312241CAA7E0065F2DD /* EventLayout.swift */,
+				222B84B924545E1500508FAA /* CalendarSwitch.swift */,
 			);
 			path = Customizations;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				221ABBAC2435E1A600E95CD2 /* HorizontalMonthCollectionViewController.swift in Sources */,
 				22ECDEB1244409C700DCA1E3 /* Reader.swift in Sources */,
 				22154D73241FF5E4001D20AD /* MonthsCell.swift in Sources */,
+				222B84BA24545E1500508FAA /* CalendarSwitch.swift in Sources */,
 				22286549241B132900FA091A /* DateCell.swift in Sources */,
 				2284D92D241E9B6B007AF1DD /* Constants.swift in Sources */,
 				2254CB90241C72DF0017ED21 /* EventsCell.swift in Sources */,
